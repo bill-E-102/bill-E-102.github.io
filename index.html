@@ -3,44 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- This title appears in the browser tab; you can change it or leave it blank -->
-  <title>My Brown-Themed Homepage</title>
-  
+  <title>Bill Brinkley’s Homepage</title>
   <style>
-    /* 
-      Customize these color variables as you like.
-      Below is a neutral brown palette with a cream-like accent.
-    */
     :root {
-      --dark-brown: #3E2723;
-      --medium-brown: #5D4037;
-      --light-brown: #D7CCC8;
-      --cream: #EFEBE9;
-      --text-color: #2F1B15;
+      --dark-green: #2E7D32;
+      --medium-green: #388E3C;
+      --light-beige: #F5F5DC;
+      --cream: #FCFCE1;
+      --text-color: #2F2F2F;
     }
-
-    /* Reset some default margins/paddings */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    /* Page body styling */
     body {
       font-family: Arial, sans-serif;
-      background-color: var(--light-brown);
+      background-color: var(--light-beige);
       color: var(--text-color);
       line-height: 1.6;
     }
-
-    /* Header section */
     header {
-      background-color: var(--dark-brown);
+      background-color: var(--dark-green);
       padding: 1rem;
     }
-
-    /* Container to center content inside header */
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -48,21 +34,16 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    /* Name / Info area in the header */
     .site-info {
       color: #FFFFFF;
       font-size: 1.25rem;
       font-weight: bold;
     }
-
-    /* Top navigation bar */
     nav ul {
       list-style: none;
       display: flex;
       gap: 1rem;
     }
-
     nav a {
       color: #FFFFFF;
       text-decoration: none;
@@ -70,12 +51,9 @@
       padding: 0.5rem 0.75rem;
       border-radius: 4px;
     }
-
     nav a:hover {
-      background-color: var(--medium-brown);
+      background-color: var(--medium-green);
     }
-
-    /* Main content section */
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -83,44 +61,33 @@
       background-color: var(--cream);
       border-radius: 6px;
     }
-
-    /* Flex container to place text on the left and photo on the right */
     .content-container {
       display: flex;
-      flex-wrap: wrap; /* allows wrapping on very narrow screens */
+      flex-wrap: wrap;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 2rem; /* spacing between text and image */
+      gap: 2rem;
     }
-
     .content-text {
-      flex: 1 1 400px; /* grows/shrinks, but aims for at least 400px wide */
+      flex: 1 1 400px;
     }
-
     .content-image {
-      flex: 0 0 auto; /* does not grow/shrink automatically */
-      text-align: center; /* center the image inside this div */
+      flex: 0 0 auto;
+      text-align: center;
     }
-
-    /* Style for your photo */
     .content-image img {
-      max-width: 200px; /* adjust the max width as needed */
-      border-radius: 50%; /* makes it circular if the photo is square */
-      border: 2px solid var(--medium-brown);
+      max-width: 200px;
+      border-radius: 50%;
+      border: 2px solid var(--medium-green);
     }
-
-    /* Headings and paragraphs */
     main h2 {
       margin-bottom: 0.5rem;
     }
-
     main p {
       margin-bottom: 1rem;
     }
-
-    /* Footer (optional) */
     footer {
-      background-color: var(--dark-brown);
+      background-color: var(--dark-green);
       color: #FFFFFF;
       text-align: center;
       padding: 1rem;
@@ -128,16 +95,11 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
     <div class="container">
-      <div class="site-info">
-        <!-- Replace with your name or preferred text -->
-        Your Name Here
-      </div>
+      <div class="site-info">Bill Brinkley</div>
       <nav>
         <ul>
-          <!-- Replace with your actual links/pages -->
           <li><a href="index.html">Home</a></li>
           <li><a href="#">Page One</a></li>
           <li><a href="#">Page Two</a></li>
@@ -146,45 +108,30 @@
       </nav>
     </div>
   </header>
-
-  <!-- MAIN CONTENT -->
   <main>
-    <!-- Flex container with text on the left and photo on the right -->
     <div class="content-container">
-      <!-- Text Section -->
       <div class="content-text">
         <h2>About This Site</h2>
         <p>
-          Welcome! This homepage is the central hub for my projects, interests,
-          and contact information. I’ll be sharing insights into my independent 
-          studies, hobbies, and more.
+          Welcome! This homepage is the central hub for my projects, interests, and contact information. 
+          I’ll be sharing insights into my independent studies, hobbies, and more.
         </p>
-
         <h2>My Interests</h2>
         <p>
-          Briefly describe your interests here. You can talk about what drives you, 
-          your favorite topics, or any projects you're currently working on.
+          Briefly describe your interests here. You can talk about what drives you, your favorite topics, 
+          or any projects you're currently working on.
         </p>
-
         <h2>Contact Info</h2>
         <p>
-          Email: <a href="mailto:yourname@example.com">yourname@example.com</a><br />
-          LinkedIn: <a href="https://linkedin.com/in/your-profile">linkedin.com/in/your-profile</a>
+          Email: <a href="mailto:billbrinkley@example.com">billbrinkley@example.com</a><br>
+          LinkedIn: <a href="https://www.linkedin.com/in/billbrinkley">linkedin.com/in/billbrinkley</a>
         </p>
       </div>
-
-      <!-- Image Section (Photo on the right) -->
       <div class="content-image">
-        <!-- Replace "your-photo.jpg" with the path to your photo 
-             (e.g., "images/profile.jpg" or a direct link) -->
-        <img src="me.jpeg" alt="Your Name">
+        <img src="me.jpeg" alt="Bill Brinkley">
       </div>
     </div>
   </main>
-
-  <!-- FOOTER (optional) -->
-  <footer>
-    © 2025 Your Name — Powered by GitHub Pages
-  </footer>
+  <footer>© 2025 Bill Brinkley — Powered by GitHub Pages</footer>
 </body>
 </html>
