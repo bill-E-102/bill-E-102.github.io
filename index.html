@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- This link adds your "circle" image (favicon) in the browser tab. -->
   <link rel="icon" href="comp.JPG" type="image/jpeg" />
   <title>bill_brink_home</title>
   <style>
@@ -36,9 +35,19 @@
       align-items: center;
     }
     .site-info {
+      display: flex; 
+      align-items: center;
       color: #FFFFFF;
       font-size: 1.25rem;
       font-weight: bold;
+    }
+    .header-profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      border: 2px solid #FFFFFF; 
+      object-fit: cover;
     }
     nav ul {
       list-style: none;
@@ -99,7 +108,10 @@
 <body>
   <header>
     <div class="container">
-      <div class="site-info">Bill Brink</div>
+      <div class="site-info">
+        <img src="comp.JPG" alt="Bill Brink's profile pic" class="header-profile-pic">
+        Bill Brink
+      </div>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -114,7 +126,8 @@
       <div class="content-text">
         <h2>About This Site</h2>
         <p>
-          Hi! I'm a math and computer science student hoping I won't forget my studies, so through this webpage I'll maintain a portfolio of my projects, studies, and interests. 
+          Hi! I'm a math and computer science student hoping I won't forget my studies,
+          so through this webpage I'll maintain a portfolio of my projects, studies, and interests.
         </p>
         <h2>Contact Info</h2>
         <p>
@@ -126,5 +139,8 @@
       </div>
     </div>
   </main>
+  <footer>
+    © 2025 Bill Brink — Powered by GitHub Pages
+  </footer>
 </body>
 </html>
