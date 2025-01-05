@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Though you mentioned "no real title," this <title> will appear in the browser tab -->
+  <!-- This title appears in the browser tab; you can change it or leave it blank -->
   <title>My Brown-Themed Homepage</title>
   
   <style>
@@ -40,7 +40,7 @@
       padding: 1rem;
     }
 
-    /* Container to center content */
+    /* Container to center content inside header */
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -61,10 +61,6 @@
       list-style: none;
       display: flex;
       gap: 1rem;
-    }
-
-    nav li {
-      /* no special styles needed, can add spacing/padding if you want */
     }
 
     nav a {
@@ -88,7 +84,32 @@
       border-radius: 6px;
     }
 
-    /* Headings and paragraphs inside main */
+    /* Flex container to place text on the left and photo on the right */
+    .content-container {
+      display: flex;
+      flex-wrap: wrap; /* allows wrapping on very narrow screens */
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem; /* spacing between text and image */
+    }
+
+    .content-text {
+      flex: 1 1 400px; /* grows/shrinks, but aims for at least 400px wide */
+    }
+
+    .content-image {
+      flex: 0 0 auto; /* does not grow/shrink automatically */
+      text-align: center; /* center the image inside this div */
+    }
+
+    /* Style for your photo */
+    .content-image img {
+      max-width: 200px; /* adjust the max width as needed */
+      border-radius: 50%; /* makes it circular if the photo is square */
+      border: 2px solid var(--medium-brown);
+    }
+
+    /* Headings and paragraphs */
     main h2 {
       margin-bottom: 0.5rem;
     }
@@ -111,12 +132,12 @@
   <header>
     <div class="container">
       <div class="site-info">
-        <!-- Replace with your name or whatever text you’d like to show -->
+        <!-- Replace with your name or preferred text -->
         Your Name Here
       </div>
       <nav>
         <ul>
-          <!-- Replace with pages or links you need -->
+          <!-- Replace with your actual links/pages -->
           <li><a href="index.html">Home</a></li>
           <li><a href="#">Page One</a></li>
           <li><a href="#">Page Two</a></li>
@@ -128,24 +149,37 @@
 
   <!-- MAIN CONTENT -->
   <main>
-    <h2>About This Site</h2>
-    <p>
-      Welcome! This homepage is the central hub for my projects, interests,
-      and contact information. I’ll be sharing insights into my independent 
-      studies, hobbies, and more.
-    </p>
+    <!-- Flex container with text on the left and photo on the right -->
+    <div class="content-container">
+      <!-- Text Section -->
+      <div class="content-text">
+        <h2>About This Site</h2>
+        <p>
+          Welcome! This homepage is the central hub for my projects, interests,
+          and contact information. I’ll be sharing insights into my independent 
+          studies, hobbies, and more.
+        </p>
 
-    <h2>My Interests</h2>
-    <p>
-      Briefly describe your interests here. You can talk about what drives you, 
-      your favorite topics, or any projects you're currently working on.
-    </p>
+        <h2>My Interests</h2>
+        <p>
+          Briefly describe your interests here. You can talk about what drives you, 
+          your favorite topics, or any projects you're currently working on.
+        </p>
 
-    <h2>Contact Info</h2>
-    <p>
-      Email: <a href="mailto:yourname@example.com">yourname@example.com</a><br />
-      LinkedIn: <a href="https://linkedin.com/in/your-profile">linkedin.com/in/your-profile</a>
-    </p>
+        <h2>Contact Info</h2>
+        <p>
+          Email: <a href="mailto:yourname@example.com">yourname@example.com</a><br />
+          LinkedIn: <a href="https://linkedin.com/in/your-profile">linkedin.com/in/your-profile</a>
+        </p>
+      </div>
+
+      <!-- Image Section (Photo on the right) -->
+      <div class="content-image">
+        <!-- Replace "your-photo.jpg" with the path to your photo 
+             (e.g., "images/profile.jpg" or a direct link) -->
+        <img src="me.jpeg" alt="Your Name">
+      </div>
+    </div>
   </main>
 
   <!-- FOOTER (optional) -->
