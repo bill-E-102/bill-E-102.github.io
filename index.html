@@ -3,97 +3,154 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Independent Study</title>
+  <!-- Though you mentioned "no real title," this <title> will appear in the browser tab -->
+  <title>My Brown-Themed Homepage</title>
+  
   <style>
-    /* Basic styling to get you started */
+    /* 
+      Customize these color variables as you like.
+      Below is a neutral brown palette with a cream-like accent.
+    */
+    :root {
+      --dark-brown: #3E2723;
+      --medium-brown: #5D4037;
+      --light-brown: #D7CCC8;
+      --cream: #EFEBE9;
+      --text-color: #2F1B15;
+    }
+
+    /* Reset some default margins/paddings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Page body styling */
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-      color: #333;
+      background-color: var(--light-brown);
+      color: var(--text-color);
+      line-height: 1.6;
     }
-    header, footer {
-      background-color: #222;
-      color: #fff;
+
+    /* Header section */
+    header {
+      background-color: var(--dark-brown);
       padding: 1rem;
     }
-    header h1, footer p {
-      margin: 0;
+
+    /* Container to center content */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    main {
-      background-color: #fff;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
+
+    /* Name / Info area in the header */
+    .site-info {
+      color: #FFFFFF;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    /* Top navigation bar */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav li {
+      /* no special styles needed, can add spacing/padding if you want */
+    }
+
+    nav a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
       border-radius: 4px;
     }
-    nav a {
-      margin: 0 0.5rem;
-      color: #fff;
-      text-decoration: none;
-    }
+
     nav a:hover {
-      text-decoration: underline;
+      background-color: var(--medium-brown);
     }
-    h2 {
-      margin-top: 0;
+
+    /* Main content section */
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: var(--cream);
+      border-radius: 6px;
+    }
+
+    /* Headings and paragraphs inside main */
+    main h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    main p {
+      margin-bottom: 1rem;
+    }
+
+    /* Footer (optional) */
+    footer {
+      background-color: var(--dark-brown);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h1>My Independent Study</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#summary">Summary</a>
-      <a href="#results">Results</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container">
+      <div class="site-info">
+        <!-- Replace with your name or whatever text you’d like to show -->
+        Your Name Here
+      </div>
+      <nav>
+        <ul>
+          <!-- Replace with pages or links you need -->
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Page One</a></li>
+          <li><a href="#">Page Two</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main>
-    <section>
-      <h2>Welcome!</h2>
-      <p>
-        This website is dedicated to my independent study, where I explore
-        <em>(describe your topic)</em>. Here, you’ll find a summary of my project,
-        the methods I used, my findings, and ways to get in touch.
-      </p>
-    </section>
+    <h2>About This Site</h2>
+    <p>
+      Welcome! This homepage is the central hub for my projects, interests,
+      and contact information. I’ll be sharing insights into my independent 
+      studies, hobbies, and more.
+    </p>
 
-    <section id="summary">
-      <h2>Project Summary</h2>
-      <p>
-        Provide an overview of your study:
-        - Why did you choose this topic?
-        - What questions are you trying to answer?
-        - What methods are you using?
-      </p>
-    </section>
+    <h2>My Interests</h2>
+    <p>
+      Briefly describe your interests here. You can talk about what drives you, 
+      your favorite topics, or any projects you're currently working on.
+    </p>
 
-    <section id="results">
-      <h2>Key Results</h2>
-      <p>
-        Summarize your major findings here. Consider adding images, charts, or
-        links to data to make your results more engaging.
-      </p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        Let visitors know how to reach you. For example:
-        <br />
-        Email: <a href="mailto:yourname@example.com">yourname@example.com</a>
-        <br />
-        LinkedIn: <a href="https://www.linkedin.com/in/yourprofile/">Your LinkedIn Profile</a>
-      </p>
-    </section>
+    <h2>Contact Info</h2>
+    <p>
+      Email: <a href="mailto:yourname@example.com">yourname@example.com</a><br />
+      LinkedIn: <a href="https://linkedin.com/in/your-profile">linkedin.com/in/your-profile</a>
+    </p>
   </main>
 
+  <!-- FOOTER (optional) -->
   <footer>
-    <p>
-      © 2025 by Your Name — Built with <a href="https://pages.github.com/" style="color:#fff;">GitHub Pages</a>
-    </p>
+    © 2025 Your Name — Powered by GitHub Pages
   </footer>
 </body>
 </html>
