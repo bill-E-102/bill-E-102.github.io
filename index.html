@@ -140,7 +140,23 @@
     </div>
   </main>
   <footer>
-    © 2025 Bill Brink — Powered by GitHub Pages
+    © 2025 Bill Brink — Last updated: <span id="last-updated"></span>
   </footer>
+
+  <script>
+    const lastUpdatedSpan = document.getElementById('last-updated');
+    // Convert the document's lastModified date string to a more human-readable format
+    const lastModified = new Date(document.lastModified);
+    // Example: "January 1, 2025, 10:05 AM"
+    const options = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: 'numeric', 
+      hour12: true 
+    };
+    lastUpdatedSpan.textContent = lastModified.toLocaleString('en-US', options);
+  </script>
 </body>
 </html>
