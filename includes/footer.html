@@ -1,0 +1,17 @@
+<footer>
+    © 2025 <span id="page-title-footer"></span>
+    — Last updated: <span id="last-updated"></span>
+  </footer>
+  <script>
+    // fill the date
+    const d = new Date(document.lastModified);
+    document.getElementById('last-updated').textContent =
+      d.toLocaleString('en-US', {
+        year:'numeric',
+        month:'long',
+        day:'numeric',
+        hour:'numeric',
+        minute:'numeric',
+        hour12:true
+      });
+  </script>

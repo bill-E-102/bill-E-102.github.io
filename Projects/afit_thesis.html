@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+
   <link rel="icon" href="/Images/favicon.ico">
   <title>AFIT Thesis: Grassmannian Codes</title>
 
-  <!-- site styles (same as projects.html) -->
-  <style>
-    /* …copy your :root colors, body, header, nav, main, footer styles… */
-  </style>
+  <!-- shared cell-based styles -->
+  <link rel="stylesheet" href="/css/styles.css">
 
-  <!-- MathJax for LaTeX -->
+  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
         tags: 'ams'
       }
     };
@@ -26,61 +26,103 @@
   </script>
 </head>
 <body>
+  <!-- header -->
   <header>
     <div class="container">
       <div class="site-info">
-        <img src="/Images/comp.JPG" alt="Projects Icon" class="header-profile-pic">
+        <img src="/Images/comp.JPG"
+             alt="Projects Icon"
+             class="header-profile-pic">
         AFIT Thesis
       </div>
       <nav>
         <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/projects.html">Projects</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Projects/projects.html">Projects</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-    <h2>Grassmannian Codes from Stratified Frames</h2>
+  <!-- two‐column cell layout -->
+  <div class="page-content">
+    <!-- Table of Contents cell -->
+    <aside class="toc">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#intro">1. Introduction</a></li>
+        <li><a href="#frames">2. Frame Definitions</a></li>
+        <li><a href="#welch">3. Welch Bound</a></li>
+        <!-- add more here -->
+      </ul>
+    </aside>
 
-    <section>
-      <!-- Your LaTeX‐ready content… -->
-      <p>
-        In this thesis we study unit‐norm tight frames $\{f_i\}_{i=1}^M\subset\C^n$
-        stratified by coherence.  Our objective is to show each stratum attains
-        near‐optimal Grassmannian packings:
-      </p>
-      $$
-      \max_{i\neq j}|\langle f_i, f_j\rangle|
-      \;\ge\;
-      \sqrt{\frac{M-n}{n(M-1)}}.
-      $$
-      <p>
-        Recall a frame is tight if
-      </p>
-      \begin{equation*}
-        \sum_{i=1}^M \langle x, f_i\rangle f_i
-        = \tfrac{M}{n}\,x,
-        \quad \forall x\in\C^n.
-      \end{equation*}
-      <!-- …more sections… -->
-    </section>
-  </main>
+    <!-- Main content cell -->
+    <main class="content-area">
+      <details id="intro">
+        <summary>1. Introduction</summary>
+        <p>
+          This master’s thesis investigates the construction of optimal subspace
+          packings (Grassmannian codes) via stratified unit‐norm tight frames.
+        </p>
+      </details>
 
+      <details id="frames">
+        <summary>2. Frame Definitions</summary>
+        <p>
+          Recall a frame is <em>tight</em> if
+        </p>
+        <equation*>
+          \sum_{i=1}^M \langle x, f_i\rangle\,f_i
+          = \frac{M}{n}\,x,
+          \quad \forall\,x\in\mathbb{C}^n.
+        </equation*>
+      </details>
+
+      <details id="welch">
+        <summary>3. Welch Bound</summary>
+        $$
+          \max_{i\neq j} \bigl|\langle f_i, f_j\rangle\bigr|
+          \;\ge\;
+          \sqrt{\frac{M-n}{n(M-1)}}.
+        $$
+      </details>
+
+      <!-- …more cells… -->
+    </main>
+  </div>
+
+  <!-- footer -->
   <footer>
-    © 2025 AFIT Thesis | Last updated:
+    © 2025 AFIT Thesis — Last updated:
     <span id="last-updated"></span>
   </footer>
 
   <script>
-    const lm = new Date(document.lastModified);
-    document.getElementById('last-updated').textContent =
-      lm.toLocaleString('en-US', {
-        year:'numeric', month:'long',
-        day:'numeric', hour:'numeric',
-        minute:'numeric', hour12:true
+    // smooth scroll & open cell
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.getAttribute('href').slice(1);
+        const cell = document.getElementById(id);
+        if (cell) {
+          cell.open = true;
+          cell.scrollIntoView({ behavior: 'smooth' });
+        }
       });
+    });
+
+    // update footer date
+    const span = document.getElementById('last-updated');
+    const lm   = new Date(document.lastModified);
+    span.textContent = lm.toLocaleString('en-US', {
+      year:   'numeric',
+      month:  'long',
+      day:    'numeric',
+      hour:   'numeric',
+      minute: 'numeric',
+      hour12: true
+    });
   </script>
 </body>
 </html>

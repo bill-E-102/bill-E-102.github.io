@@ -2,135 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
-  <title>bill_brink_home</title>
-  <style>
-    :root {
-      --beige: #f1ecc8;
-      --cream: #fafae6;
-      --olive: #5b5b21;
-      --text-color: #2F2F2F;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: var(--beige);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-    header {
-      background-color: var(--olive);
-      padding: 1rem;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .site-info {
-      display: flex; 
-      align-items: center;
-      color: #FFFFFF;
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-    .header-profile-pic {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 0.5rem;
-      border: 2px solid #FFFFFF; 
-      object-fit: cover;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-    }
-    nav a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 0.75rem;
-      border-radius: 4px;
-    }
-    nav a:hover {
-      background-color: var(--olive);
-      opacity: 0.8;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background-color: var(--cream);
-      border-radius: 6px;
-    }
-    .content-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-    .content-text {
-      flex: 1 1 400px;
-    }
-    .content-image {
-      flex: 0 0 auto;
-      text-align: center;
-    }
-    .content-image img {
-      max-width: 200px;
-      border-radius: 50%;
-      border: 2px solid var(--olive);
-    }
-    main h2 {
-      margin-bottom: 0.5rem;
-    }
-    main p {
-      margin-bottom: 1rem;
-    }
-    footer {
-      background-color: var(--olive);
-      color: #FFFFFF;
-      text-align: center;
-      padding: 1rem;
-    }
-  </style>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="/Images/favicon.ico">
+  <title>Bill Brink — Home</title>
+
+  <!-- link in your generic stylesheet -->
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+
   <header>
     <div class="container">
       <div class="site-info">
-        <img src="/Images/comp.JPG" alt="profile pic" class="header-profile-pic">
+        <img src="/Images/comp.JPG"
+             alt="profile pic"
+             class="header-profile-pic">
         Bill Brink
       </div>
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">Studies</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Puzzles</a></li>
           <li><a href="/Projects/projects.html">Projects</a></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <main>
     <div class="content-container">
       <div class="content-text">
         <h2>About This Site</h2>
         <p>
-          Hi! I'm a math student hoping I won't forget my studies, so through this webpage I'll maintain a portfolio of my projects, studies, and interests.
+          Hi! I'm a math student hoping I won't forget my studies, so through
+          this webpage I'll maintain a portfolio of my projects, studies,
+          and interests.
         </p>
+
         <h2>Contact Info</h2>
         <p>
-          You either already have it or you don't need it. &#128077;
+          You either already have it or you don't need it. 👍
         </p>
       </div>
       <div class="content-image">
@@ -138,24 +50,23 @@
       </div>
     </div>
   </main>
+
   <footer>
-    © 2025 Bill Brink — Last updated: <span id="last-updated"></span>
+    © 2025 Bill Brink — Last updated:
+    <span id="last-updated"></span>
   </footer>
 
   <script>
-    const lastUpdatedSpan = document.getElementById('last-updated');
-    // Convert the document's lastModified date string to a more human-readable format
-    const lastModified = new Date(document.lastModified);
-    // Example: "January 1, 2025, 10:05 AM"
-    const options = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric', 
-      hour: 'numeric', 
-      minute: 'numeric', 
-      hour12: true 
-    };
-    lastUpdatedSpan.textContent = lastModified.toLocaleString('en-US', options);
+    const span = document.getElementById('last-updated');
+    const lm   = new Date(document.lastModified);
+    span.textContent = lm.toLocaleString('en-US', {
+      year:   'numeric',
+      month:  'long',
+      day:    'numeric',
+      hour:   'numeric',
+      minute: 'numeric',
+      hour12: true
+    });
   </script>
 </body>
 </html>
