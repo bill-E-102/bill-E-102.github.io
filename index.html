@@ -1,64 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta & Title -->
   <meta charset="utf-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="/Images/favicon.ico">
   <title>Bill Brink — Home</title>
 
-  <!-- link in your generic stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
+  <!-- ──────────────────────────────────────────────────────────────────────
+       HEADER
+  ────────────────────────────────────────────────────────────────────── -->
   <header>
     <div class="container">
       <div class="site-info">
         <img src="/Images/comp.JPG"
-             alt="profile pic"
+             alt="Profile Picture"
              class="header-profile-pic">
         Bill Brink
       </div>
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="#">Puzzles</a></li>
           <li><a href="/Projects/projects.html">Projects</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- ──────────────────────────────────────────────────────────────────────
+       MAIN CONTENT
+  ────────────────────────────────────────────────────────────────────── -->
   <main>
     <div class="content-container">
-      <div class="content-text">
-        <h2>About This Site</h2>
-        <p>
-          Hi! I'm a math student hoping I won't forget my studies, so through
-          this webpage I'll maintain a portfolio of my projects, studies,
-          and interests.
-        </p>
-
-        <h2>Contact Info</h2>
-        <p>
-          You either already have it or you don't need it. 👍
-        </p>
-      </div>
-      <div class="content-image">
-        <img src="/Images/me.jpeg" alt="Bill Brinkley">
-      </div>
+      <!-- About Me Section -->
+      <section class="about-container">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            Hi! I'm a math student trying to not forget my studies through maintaining this site—a portfolio
+            of my projects, research, and interests.
+          </p>
+          <ul class="about-list">
+            <li>
+              <strong>Education:</strong>
+              <ul>
+                <li>B.S. in Computer Science, University of Virginia (2023)</li>
+                <li>M.S. in Applied Mathematics, AFIT (2025)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Interests:</strong>
+              <ul>
+                <li>Signal Processing</li>
+                <li>Cryptography</li>
+                <li>Coding Theory</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Contact Info:</strong>
+              <p>You either already have it or you don't need it. 👍</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- Profile Image -->
+        <div class="content-image">
+          <img src="/Images/me.jpeg" alt="Bill Brinkley">
+        </div>
     </div>
   </main>
 
+  <!-- ──────────────────────────────────────────────────────────────────────
+       FOOTER
+  ────────────────────────────────────────────────────────────────────── -->
   <footer>
     © 2025 Bill Brink — Last updated:
     <span id="last-updated"></span>
   </footer>
 
+  <!-- ──────────────────────────────────────────────────────────────────────
+       SCRIPTS
+  ────────────────────────────────────────────────────────────────────── -->
   <script>
+    // Populate “last-updated” with the page’s lastModified
     const span = document.getElementById('last-updated');
-    const lm   = new Date(document.lastModified);
+    const lm = new Date(document.lastModified);
     span.textContent = lm.toLocaleString('en-US', {
       year:   'numeric',
       month:  'long',

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--──────────────────────────────────────────────────────────────────────────
+    Meta & Title
+  ───────────────────────────────────────────────────────────────────────────-->
   <meta charset="utf-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1" />
-
-  <link rel="icon" href="/Images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../Images/favicon.ico">
   <title>AFIT Thesis: Grassmannian Codes</title>
 
-  <!-- shared cell-based styles -->
-  <link rel="stylesheet" href="/css/styles.css">
-
-  <!-- MathJax -->
+  <!--──────────────────────────────────────────────────────────────────────────
+    Styles & MathJax
+  ───────────────────────────────────────────────────────────────────────────-->
+  <link rel="stylesheet" href="../css/styles.css">
   <script>
     window.MathJax = {
       tex: {
@@ -21,49 +22,50 @@
       }
     };
   </script>
-  <script async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
-  <!-- header -->
+  <!--──────────────────────────────────────────────────────────────────────────
+    Header
+  ───────────────────────────────────────────────────────────────────────────-->
   <header>
     <div class="container">
       <div class="site-info">
-        <img src="/Images/comp.JPG"
-             alt="Projects Icon"
-             class="header-profile-pic">
+        <img src="../Images/comp.JPG" alt="Projects Icon" class="header-profile-pic">
         AFIT Thesis
       </div>
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/Projects/projects.html">Projects</a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- two‐column cell layout -->
+  <!--──────────────────────────────────────────────────────────────────────────
+    Two‐Column Layout: TOC & Content
+  ───────────────────────────────────────────────────────────────────────────-->
   <div class="page-content">
-    <!-- Table of Contents cell -->
+    <!-- Table of Contents -->
     <aside class="toc">
       <h3>Contents</h3>
       <ul>
         <li><a href="#intro">1. Introduction</a></li>
         <li><a href="#frames">2. Frame Definitions</a></li>
         <li><a href="#welch">3. Welch Bound</a></li>
-        <!-- add more here -->
       </ul>
     </aside>
 
-    <!-- Main content cell -->
+    <!-- Main Content with Collapsible Sections -->
     <main class="content-area">
+      <h2>Grassmannian Codes from Stratified Frames</h2>
+      <h3>AFIT M.S. Thesis in Applied Mathematics</h3>
       <details id="intro">
         <summary>1. Introduction</summary>
         <p>
-          This master’s thesis investigates the construction of optimal subspace
-          packings (Grassmannian codes) via stratified unit‐norm tight frames.
+          On this page, I give the moral argument behind my thesis, which gave
         </p>
       </details>
 
@@ -74,8 +76,7 @@
         </p>
         <equation*>
           \sum_{i=1}^M \langle x, f_i\rangle\,f_i
-          = \frac{M}{n}\,x,
-          \quad \forall\,x\in\mathbb{C}^n.
+          = \frac{M}{n}\,x,\quad \forall\,x\in\mathbb{C}^n.
         </equation*>
       </details>
 
@@ -87,34 +88,41 @@
           \sqrt{\frac{M-n}{n(M-1)}}.
         $$
       </details>
-
-      <!-- …more cells… -->
     </main>
   </div>
 
-  <!-- footer -->
+  <!--──────────────────────────────────────────────────────────────────────────
+    Footer
+  ───────────────────────────────────────────────────────────────────────────-->
   <footer>
     © 2025 AFIT Thesis — Last updated:
     <span id="last-updated"></span>
   </footer>
 
+  <!--──────────────────────────────────────────────────────────────────────────
+    Scripts: Smooth Scroll & Timestamp
+  ───────────────────────────────────────────────────────────────────────────-->
   <script>
-    // smooth scroll & open cell
+    // Smooth-scroll and open the corresponding <details> on TOC click
     document.querySelectorAll('.toc a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
-        const id = link.getAttribute('href').slice(1);
+        const id = link.hash.slice(1);
         const cell = document.getElementById(id);
         if (cell) {
           cell.open = true;
-          cell.scrollIntoView({ behavior: 'smooth' });
+          try {
+            cell.scrollIntoView({ behavior: 'smooth' });
+          } catch {
+            cell.scrollIntoView();
+          }
         }
       });
     });
 
-    // update footer date
+    // Populate “last-updated” with page’s lastModified timestamp
     const span = document.getElementById('last-updated');
-    const lm   = new Date(document.lastModified);
+    const lm = new Date(document.lastModified);
     span.textContent = lm.toLocaleString('en-US', {
       year:   'numeric',
       month:  'long',
