@@ -191,14 +191,15 @@ h3 {
   border: 2px solid var(--olive);
   border-radius: 6px;
   margin-bottom: 1rem;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
 }
 .content-area details summary {
   cursor: pointer;
   font-weight: bold;
   outline: none;
   font-size: 1.1rem;        
-  color: var(--olive);     
+  color: var(--olive);  
+  margin-bottom: 0.3rem;  
 }
 .content-area details[open] {
   /* optional: style when open */
@@ -207,8 +208,12 @@ h3 {
 .content-area details p,
 .content-area details equation*,
 .content-area details div {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0rem; 
 }
+.content-area details {
+  overflow: hidden;          /* hides any child elements outside the summary box */
+}
+
 
 /*────────────────────────────────────────────────────────────────────────────
    Index Page “About” Section & Oval Image
@@ -218,7 +223,7 @@ h3 {
   flex-wrap: wrap;
   align-items: center;       
   justify-content: space-between;
-  gap: 2rem;
+  gap: 0rem;
 }
 .content-text {
   flex: 1 1 400px;
@@ -229,7 +234,7 @@ h3 {
 }
 /* oval-bordered image */
 .content-image img {
-  max-width: 300px;
+  max-width: 350px;
   border-radius: 50%;
   border: 2px solid var(--olive);
 }
@@ -248,10 +253,10 @@ main {
   padding: 0 5rem;
 }
 .content-image {
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 .content-text {
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 /*────────────────────────────────────────────────────────────────────────────
