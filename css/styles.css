@@ -184,93 +184,45 @@ nav a:hover {
 }
 
 /*────────────────────────────────────────────────────────────────────────────
-   Collapsible Cells  – exact same width whether open or closed
+   Collapsible Cells
 ────────────────────────────────────────────────────────────────────────────*/
-
-/* The reading column itself ------------------------------------------------*/
 .content-area {
-  flex: 2 0 0;              /* grow ×2, don’t shrink, zero basis          */
-  min-width: 0;             /* allow long lines to wrap/scroll            */
+  /* grow twice as fast, don’t shrink, start at zero basis */
+  flex: 2 0 0;
+  /* allow child details to truly fill the space */
+  min-width: 0;
+  /* …the rest stays the same… */
 }
-
-/* <details> wrapper -------------------------------------------------------*/
 .content-area details {
-  /* one single width declaration – no duplicates */
-  width: 100%;              /* fill .content-area’s full flex width       */
-  box-sizing: border-box;   /* include the 2 px border in that 100 %      */
-  background: var(--cream);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--cream);
   border: 2px solid var(--olive);
   border-radius: 6px;
-  margin: 0 0 1rem;
+  margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   overflow: hidden;
 }
-
-/* <summary> header --------------------------------------------------------*/
 .content-area details summary {
-  /* give the header a genuine block footprint equal to its parent */
-  display: block;
-  width: 100%;
-  padding-inline-start: 0;      /* nuke UA indent (Firefox)            */
-  margin: 0 0 0.3rem;           /* keep your original gap              */
   cursor: pointer;
-  font: bold 1.1rem/1 var(--text-color);
-  color: var(--olive);
-  list-style: none;             /* legacy Firefox                      */
+  width: 100%;
+  font-weight: bold;
   outline: none;
-}
-
-/* 1. Remove native markers that create extra inline padding ------------*/
-.content-area details summary::marker {            /* Firefox / modern Blink */
-  content: "";
-}
-.content-area details summary::-webkit-details-marker { /* WebKit / old Blink */
-  display: none;
-}
-
-/* 2. Add a custom arrow (optional) -------------------------------------*/
-.content-area details summary::before {
-  content: "▸";
-  display: inline-block;
-  margin-right: 0.5rem;
-  transition: transform 0.2s ease;
-}
-.content-area details[open] summary::before {
-  transform: rotate(90deg);      /* ▶ becomes ▼                         */
-}
-
-/* 3. Tidy inside content ----------------------------------------------*/
-.content-area details > *:not(summary) {
-  margin: 0;                     /* collapse the default <p> spacing     */
-}
-
-/*────────────────────────────────────────────────────────────────────────────
-   Nested subsections inside a parent cell (no border)
-────────────────────────────────────────────────────────────────────────────*/
-.content-area details.subdetails {
-  margin: 0.5rem 0 0;        /* small gap under previous block          */
-  padding: 0.4rem 0.8rem;    /* inset text a bit for visual nesting     */
-  background: transparent;   /* inherits parent cream                   */
-}
-
-.content-area details.subdetails summary {
-  font-size: 1rem;           /* slightly smaller than main heading      */
+  font-size: 1.1rem;
   color: var(--olive);
+  margin-bottom: 0.3rem;
+}
+.content-area details p,
+.content-area details equation*,
+.content-area details div {
+  margin-bottom: 0;
+}
+.content-area details {
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* arrow—reuse your existing style */
-.content-area details.subdetails summary::before {
-  content: "▸";
-  margin-right: 0.4rem;
-  transition: transform 0.2s ease;
-}
-.content-area details.subdetails[open] summary::before {
-  transform: rotate(90deg);
-}
-
-/* hide native markers for these too */
-.content-area details.subdetails summary::marker { content:""; }
-.content-area details.subdetails summary::-webkit-details-marker { display:none; }
 /*────────────────────────────────────────────────────────────────────────────
    Projects Page Cards
 ────────────────────────────────────────────────────────────────────────────*/
