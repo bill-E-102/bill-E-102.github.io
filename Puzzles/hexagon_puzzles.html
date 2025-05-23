@@ -7,12 +7,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="../Images/favicon.ico">
-  <title>AFIT Thesis: Grassmannian Codes</title>
+  <title>Puzzles: Hexagonal Numbers</title>
 
   <!--──────────────────────────────────────────────────────────────────────────
     Styles & MathJax
   ───────────────────────────────────────────────────────────────────────────-->
-<link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <script>
     window.MathJax = {
       tex: {
@@ -32,13 +32,14 @@
   <header>
     <div class="container">
       <div class="site-info">
-        <img src="../Images/comp.JPG" alt="Projects Icon" class="header-profile-pic">
-        AFIT Thesis
+        <img src="../Images/comp.JPG" alt="Puzzles Icon" class="header-profile-pic">
+        Hexagonal Puzzles
       </div>
       <nav>
         <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
+          <li><a href="">Home</a></li>
+          <li><a href="/Puzzles/puzzles.html">Puzzles</a></li>
+          <li><a href="/Projects/projects.html">Projects</a></li>
         </ul>
       </nav>
     </div>
@@ -53,56 +54,44 @@
       <h3>Contents</h3>
       <ul>
         <li>
-          <a href="#intro">1. Introduction</a>
+          <a href="#hex_points_q">1. Points Inside a Hexagon</a>
           <ul>
-            <li><a href="#intro-abs">1.1 Abstract</a></li>
+            <li><a href="#hex_points_a">Answer</a></li>
           </ul>
         </li>
-        <li><a href="#frames">2. Subspace Packing Problem</a></li>
-        <li><a href="#welch">3. Enter ECTFFs</a></li>
       </ul>
     </aside>
 
     <!-- Main Content with Collapsible Sections -->
     <main class="content-area">
-      <h2>Grassmannian Codes from Stratified Frames</h2>
-      <h3>AFIT M.S. Thesis in Applied Mathematics</h3>
-      <details id="intro">
-        <summary>1. Introduction</summary>
+      <h2>Hexagonal Puzzles</h2>
+
+      <details id="hex_points_q">
+        <summary>How many points are in the $n$th hexagon?</summary>
         <p>
-          This page will give the moral argument behind my thesis, which I completed 
-          under the advisement of Dr. Matthew Fickus. For the more in-depth and rigorous
-          treatment of these ideas, you can download a copy of my thesis 
-          <a href="/Downloadables/Brinkley_AFIT_Thesis.pdf" download="Grassmannian_Codes_Thesis.pdf">
-            here.
-          </a>
+            Suppose we have a hexagonal lattice and hexagons of various sizes. 
+            We might be interested in how many lattice points are contained in a hexagon of side 
+            length $n$ (assuming further that the hexagon is placed down nicely, with each corner
+            fixed to a lattice point). 
         </p>
-        <!-- Sub-details 1.1 -->
-        <details id="intro-abs" class="subdetails">
-          <summary>1.1&nbsp; Abstract</summary>
-          <p>…abstract text…</p>
+        <p>
+            This amounts to counting points inside expanding concentric hexagons. We give the first
+            few cases below:
+        </p>
+        <figure class="svg-figure">
+            <img src="/Puzzles/resources/hexagon_num.svg" alt="Hexagonal Rings", class="svg-large">
+            <!-- <figcaption>First four hexagonal numbers as dot layers</figcaption> -->
+        </figure>
+
+
+        <details id="hex_points_a" class="subdetails">
+          <summary>&nbsp; Answer</summary>
+          <p>
+            We write
+          </p>
         </details>
       </details>
 
-      <details id="frames">
-        <summary>2. Frame Definitions</summary>
-        <p>
-          Recall a frame is <em>tight</em> if
-        </p>
-        <equation*>
-          \sum_{i=1}^M \langle x, f_i\rangle\,f_i
-          = \frac{M}{n}\,x,\quad \forall\,x\in\mathbb{C}^n.
-        </equation*>
-      </details>
-
-      <details id="welch">
-        <summary>3. Welch Bound</summary>
-        $$
-          \max_{i\neq j} \bigl|\langle f_i, f_j\rangle\bigr|
-          \;\ge\;
-          \sqrt{\frac{M-n}{n(M-1)}}.
-        $$
-      </details>
     </main>
   </div>
 
@@ -110,53 +99,48 @@
     Footer
   ───────────────────────────────────────────────────────────────────────────-->
   <footer>
-    © 2025 Bill Brink — AFIT Thesis — Last updated:
+    © 2025 Bill Brink — Hexagonal Puzzles — Last updated:
     <span id="last-updated"></span>
   </footer>
 
   <!--──────────────────────────────────────────────────────────────────────────
     Scripts: Smooth Scroll & Timestamp
   ───────────────────────────────────────────────────────────────────────────-->
-<script>
-  // Smooth-scroll and open any parent <details> on TOC link click
-  document.querySelectorAll('.toc a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const id = link.hash.slice(1);
-      const target = document.getElementById(id);
-      if (target) {
-        // Open all ancestor <details> elements
-        let node = target;
-        while (node && node !== document.body) {
-          if (node.tagName.toLowerCase() === 'details') {
-            node.open = true;
+  <script>
+    // Smooth-scroll and open any parent <details> on TOC link click
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.hash.slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          let node = target;
+          while (node && node !== document.body) {
+            if (node.tagName.toLowerCase() === 'details') {
+              node.open = true;
+            }
+            node = node.parentElement;
           }
-          node = node.parentElement;
+          try {
+            target.scrollIntoView({ behavior: 'smooth' });
+          } catch {
+            target.scrollIntoView();
+          }
         }
-
-        // Then scroll smoothly to the actual target
-        try {
-          target.scrollIntoView({ behavior: 'smooth' });
-        } catch {
-          target.scrollIntoView();
-        }
-      }
+      });
     });
-  });
 
-  // Populate “last-updated” with page’s lastModified timestamp
-  const span = document.getElementById('last-updated');
-  const lm = new Date(document.lastModified);
-  span.textContent = lm.toLocaleString('en-US', {
-    year:   'numeric',
-    month:  'long',
-    day:    'numeric',
-    hour:   'numeric',
-    minute: 'numeric',
-    hour12: true
-  });
-</script>
-
-  
+    // Populate “last-updated” with page’s lastModified timestamp
+    const span = document.getElementById('last-updated');
+    const lm = new Date(document.lastModified);
+    span.textContent = lm.toLocaleString('en-US', {
+      year:   'numeric',
+      month:  'long',
+      day:    'numeric',
+      hour:   'numeric',
+      minute: 'numeric',
+      hour12: true
+    });
+  </script>
 </body>
 </html>

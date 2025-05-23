@@ -35,6 +35,32 @@ main {
 }
 
 /*────────────────────────────────────────────────────────────────────────────
+   Images
+────────────────────────────────────────────────────────────────────────────*/
+
+.centered-image {
+  text-align: center;
+  margin: 2rem 0; /* optional spacing */
+}
+
+.svg-figure {
+  text-align: center;
+  margin: 2rem 0;
+}
+.svg-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.svg-large {
+  width: 900px;       /* or any unit: %, rem, vh, etc. */
+  max-width: 90%;     /* responsive fallback */
+  display: block;
+  margin: 0 auto;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
    Headings
 ────────────────────────────────────────────────────────────────────────────*/
 h1, h2 {
@@ -183,45 +209,102 @@ nav a:hover {
   padding: 1rem;
 }
 
-/*────────────────────────────────────────────────────────────────────────────
-   Collapsible Cells
-────────────────────────────────────────────────────────────────────────────*/
-.content-area {
-  /* grow twice as fast, don’t shrink, start at zero basis */
-  flex: 2 0 0;
-  /* allow child details to truly fill the space */
-  min-width: 0;
-  /* …the rest stays the same… */
+.toc ul ul {
+  margin-left: 1rem;  /* indent nested lists */
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--olive); /* optional visual cue */
 }
+
+/*────────────────────────────────────────────────────────────────────────────
+   Collapsible Cells  – exact same width whether open or closed
+────────────────────────────────────────────────────────────────────────────*/
+
+/* The reading column itself ------------------------------------------------*/
+.content-area {
+  flex: 2 0 0;              /* grow ×2, don’t shrink, zero basis          */
+  min-width: 0;             /* allow long lines to wrap/scroll            */
+}
+
+/* <details> wrapper -------------------------------------------------------*/
 .content-area details {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: var(--cream);
+  /* one single width declaration – no duplicates */
+  width: 100%;              /* fill .content-area’s full flex width       */
+  box-sizing: border-box;   /* include the 2 px border in that 100 %      */
+  background: var(--cream);
   border: 2px solid var(--olive);
   border-radius: 6px;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
   padding: 0.5rem 1rem;
   overflow: hidden;
 }
+
+/* <summary> header --------------------------------------------------------*/
 .content-area details summary {
+  /* give the header a genuine block footprint equal to its parent */
+  display: block;
+  width: 100%;
+  padding-inline-start: 0;      /* nuke UA indent (Firefox)            */
+  margin: 0 0 0.3rem;           /* keep your original gap              */
   cursor: pointer;
-  width: 100%;
-  font-weight: bold;
-  outline: none;
-  font-size: 1.1rem;
+  font: bold 1.1rem/1 var(--text-color);
   color: var(--olive);
-  margin-bottom: 0.3rem;
+  list-style: none;             /* legacy Firefox                      */
+  outline: none;
 }
-.content-area details p,
-.content-area details equation*,
-.content-area details div {
-  margin-bottom: 0;
+
+/* 1. Remove native markers that create extra inline padding ------------*/
+.content-area details summary::marker {            /* Firefox / modern Blink */
+  content: "";
 }
-.content-area details {
-  width: 100%;
-  box-sizing: border-box;
+.content-area details summary::-webkit-details-marker { /* WebKit / old Blink */
+  display: none;
 }
+
+/* 2. Add a custom arrow (optional) -------------------------------------*/
+.content-area details summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+.content-area details[open] summary::before {
+  transform: rotate(90deg);      /* ▶ becomes ▼                         */
+}
+
+/* 3. Tidy inside content ----------------------------------------------*/
+.content-area details > *:not(summary) {
+  margin: 0;                     /* collapse the default <p> spacing     */
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Nested subsections inside a parent cell (no border)
+────────────────────────────────────────────────────────────────────────────*/
+.content-area details.subdetails {
+  margin: 0.5rem 0 0;        /* small gap under previous block          */
+  padding: 0.2rem 0.8rem;    /* inset text a bit for visual nesting     */
+  background: transparent;   /* inherits parent cream                   */
+  border: 0px solid var(--olive);
+  border-radius: 0px;
+}
+
+.content-area details.subdetails summary {
+  font-size: 1rem;           /* slightly smaller than main heading      */
+  color: var(--olive);
+}
+
+/* arrow—reuse your existing style */
+.content-area details.subdetails summary::before {
+  content: "▸";
+  margin-right: 0.4rem;
+  transition: transform 0.2s ease;
+}
+.content-area details.subdetails[open] summary::before {
+  transform: rotate(90deg);
+}
+
+/* hide native markers for these too */
+.content-area details.subdetails summary::marker { content:""; }
+.content-area details.subdetails summary::-webkit-details-marker { display:none; }
 
 /*────────────────────────────────────────────────────────────────────────────
    Projects Page Cards
@@ -238,6 +321,7 @@ nav a:hover {
   border: 2px solid var(--olive);
   border-radius: 6px;
   padding: 1rem;
+  margin-top: 0.5rem;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .project-card:hover {
