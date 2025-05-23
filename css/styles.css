@@ -321,7 +321,7 @@ nav a:hover {
   border: 2px solid var(--olive);
   border-radius: 6px;
   padding: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0rem;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .project-card:hover {
