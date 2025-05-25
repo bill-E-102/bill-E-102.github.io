@@ -69,7 +69,7 @@ main {
   color: var(--text-color);
 }
 .svg-large {
-  width: clamp(18rem, 50vw, 75rem); /* 352 px → 60 % → 1200 px           */
+  width: clamp(22rem, 40vw, 75rem); /* 352 px → 60 % → 1200 px           */
   display: block;
   margin-inline: auto;
   max-width: 100%;

@@ -58,6 +58,10 @@
           <ul>
             <li><a href="#hex_points_a">Answer</a></li>
           </ul>
+          <a href="#hex_in_hex">2. Hexagons Inside a Hexagon</a>
+          <ul>
+            <li><a href="#hex_in_hex_a">Answer</a></li>
+          </ul>
         </li>
       </ul>
     </aside>
@@ -79,8 +83,7 @@
             few cases below:
         </p>
         <figure class="svg-figure">
-            <img src="/Puzzles/resources/hexagon_num/hexagon_num.svg" alt="Hexagonal Rings", class="svg-large">
-            <!-- <figcaption>First four hexagonal numbers as dot layers</figcaption> -->
+            <img src="/Puzzles/resources/hexagon_num/hexagon_num1.svg" alt="Hexagonal Rings", style= "width: clamp(22rem, 40vw, 75rem)">
         </figure>
 
 
@@ -100,23 +103,19 @@
       <details id="hex_in_hex">
         <summary>How many $H_1$ hexagons fit inside the $n$th hexagon?</summary>
         <p>
-            Suppose we now wish to pack as many hexagons of side length 1 into a hexagon with side
+            Now suppose we wish to pack as many hexagons of side length 1 into a hexagon with side
             length $n$.
-            We might be interested in how many lattice points are contained in a hexagon of side 
-            length $n$ (assuming further that the hexagon is placed down nicely, with each corner
-            fixed to a lattice point). 
         </p>
         <p>
             This amounts to counting points inside expanding concentric hexagons. We give the first
             few cases below:
         </p>
         <figure class="svg-figure">
-            <img src="/Puzzles/resources/hexagon_num/hexagon_num.svg" alt="Hexagonal Rings", class="svg-large">
-            <!-- <figcaption>First four hexagonal numbers as dot layers</figcaption> -->
+          <img src="/Puzzles/resources/hexagon_num/hexagon_num1.svg" alt="Hexagonal Rings", class="svg-large"> 
         </figure>
 
 
-        <details id="hex_points_a" class="subdetails">
+        <details id="hex_in_hex_a" class="subdetails">
           <summary>&nbsp; Answer</summary>
           <p>
             Excluding the case where $n=1$, we first note that the outermost hexagonal ring contains 
