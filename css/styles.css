@@ -2,11 +2,15 @@
    Variables
 ────────────────────────────────────────────────────────────────────────────*/
 :root {
+  /* palette */
   --beige:      #f1ecc8;
   --cream:      #fefef4;
   --olive:      #595924;
   --text-color: #2F2F2F;
   --white:      #FFF;
+
+  /* fluid base font size: 16 px → 20 px across screen widths            */
+  --base-font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
 }
 
 /*────────────────────────────────────────────────────────────────────────────
@@ -28,21 +32,33 @@ body {
   line-height: 1.6;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  min-height: 100vh;
+  font-size: var(--base-font-size);  /* NEW */
 }
 main {
-  flex: 1 0 auto; 
+  flex: 1 0 auto;
+}
+
+/* fluid container shared by header & others */
+.container {
+  width: min(90%, 72rem);           /* ≤ 1152 px cap                      */
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 1600px) {
+  .container { width: min(86%, 85rem); }  /* widen slightly on 4 K         */
 }
 
 /*────────────────────────────────────────────────────────────────────────────
    Images
 ────────────────────────────────────────────────────────────────────────────*/
-
 .centered-image {
   text-align: center;
-  margin: 2rem 0; /* optional spacing */
+  margin: 2rem 0;
 }
-
 .svg-figure {
   text-align: center;
   margin: 2rem 0;
@@ -52,23 +68,28 @@ main {
   font-size: 0.9rem;
   color: var(--text-color);
 }
-
 .svg-large {
-  width: 900px;       /* or any unit: %, rem, vh, etc. */
-  max-width: 90%;     /* responsive fallback */
+  width: clamp(22rem, 60vw, 75rem); /* 352 px → 60 % → 1200 px           */
   display: block;
-  margin: 0 auto;
+  margin-inline: auto;
+  max-width: 100%;
 }
 
 /*────────────────────────────────────────────────────────────────────────────
    Headings
 ────────────────────────────────────────────────────────────────────────────*/
-h1, h2 {
+h1 {
+  font-size: clamp(1.8rem, .8rem + 1.8vw, 3rem);
+  color: var(--olive);
+}
+h2 {
+  font-size: clamp(1.05rem, .6rem + 1.2vw, 2rem);
   color: var(--olive);
 }
 h3 {
+  font-size: clamp(.85rem, 0.5rem + 0.6vw, 1.2rem);
   color: var(--text-color);
-  margin-bottom: 0.5rem; /* small gap under h3 */
+  margin-bottom: 0.5rem;
 }
 
 /*────────────────────────────────────────────────────────────────────────────
