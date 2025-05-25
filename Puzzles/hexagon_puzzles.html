@@ -37,7 +37,7 @@
       </div>
       <nav>
         <ul>
-          <li><a href="">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/Puzzles/puzzles.html">Puzzles</a></li>
           <li><a href="/Projects/projects.html">Projects</a></li>
         </ul>
@@ -87,7 +87,12 @@
         <details id="hex_points_a" class="subdetails">
           <summary>&nbsp; Answer</summary>
           <p>
-            We write
+            Excluding the case where $n=1$, we first note that the outermost hexagonal ring contains 
+            $6(n-1)$ points, yielding the following formula:
+            $$H_n := 1+\sum_{i = 1}^n 6(n-1).$$
+            One can then show by the formula for the sum of the first $n$ natural number, the expression
+            above is equivalent to the following:
+            $$H_n := 3n^2 - 3n + 1.$$
           </p>
         </details>
       </details>

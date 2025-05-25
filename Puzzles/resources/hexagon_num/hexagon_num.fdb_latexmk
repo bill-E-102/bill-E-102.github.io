@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1747887879.72951 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon_num.tex" "hexagon_num.pdf" "hexagon_num" 1747887880.18326 0
-  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon_num.tex" 1747887879.54043 1378 5ef575bc3595bf2ba3e923b4c0736335 ""
+["pdflatex"] 1748150399.48904 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon/hexagon_num.tex" "hexagon_num.pdf" "hexagon_num" 1748150399.97144 0
+  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon/hexagon_num.tex" 1747887879.54043 1378 5ef575bc3595bf2ba3e923b4c0736335 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
@@ -96,7 +96,7 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1732422387.43307 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1732422334 8221429 b65389ce018bd5fb704c03d66f586641 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "hexagon_num.aux" 1747887880.15704 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "hexagon_num.aux" 1748150399.94399 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "hexagon_num.tex" 1747887879.54043 1378 5ef575bc3595bf2ba3e923b4c0736335 ""
   (generated)
   "hexagon_num.aux"

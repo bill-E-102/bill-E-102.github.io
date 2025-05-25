@@ -1,8 +1,8 @@
-PWD /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources
+PWD /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon_num.tex
+INPUT /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon/hexagon_num.tex
 OUTPUT hexagon_num.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/standalone/standalone.cls
