@@ -348,7 +348,7 @@ nav a:hover {
 
   /* fluid width – tracks the other big containers */
   width: min(90%, 68rem);          /* ≤ 1088 px cap                       */
-  margin: 2rem auto 1rem;
+  margin: 1.5rem auto 1rem;
 }
 
 .project-card {

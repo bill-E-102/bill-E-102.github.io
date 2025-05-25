@@ -8,15 +8,30 @@
   <link rel="icon" href="/Images/favicon.ico">
   <title>Puzzles</title>
 
-  <!-- CSS import -->
   <link rel="stylesheet" href="/css/styles.css?v=2">
 
-  <!-- Page-specific tweak: align this page’s H2 with the cards -->
+  <!-- updating h2 to align to cards -->
   <style>
+    /* matches .projects-container → width: min(90%, 68rem) */
     main > h2 {
-      max-width: 900px;
-      margin: 1rem auto 0rem;
+      width:  min(90%, 68rem);
+      margin: 1rem auto 0;   /* centres the rail */
       text-align: left;
+    }
+
+    /* 1440 px */
+    @media (min-width: 1440px) {
+      main > h2 { width: min(86%, 85rem); }
+    }
+    main > h3 {
+      width:  min(90%, 68rem);
+      margin: .2rem auto 0;   /* centres the rail */
+      text-align: left;
+    }
+
+    /* 1440 px */
+    @media (min-width: 1440px) {
+      main > h3 { width: min(86%, 85rem); }
     }
   </style>
 </head>
@@ -33,6 +48,7 @@
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
+            <li><a href="/Puzzles/puzzles.html">Puzzles</a></li>
           <li><a href="/Projects/projects.html?v=2">Projects</a></li>
         </ul>
       </nav>
@@ -41,6 +57,9 @@
 
   <main>
     <h2>List of Puzzles</h2>
+    <!-- <h3>A small group of my coworkers and I enjoy posing daily puzzles, a few of which I list below. 
+        I claim no originality in either the statement or resulting answer of any puzzle; in fact, I 
+        intend to discuss some well known puzzles. </h3> -->
 
     <div class="projects-container">
 
