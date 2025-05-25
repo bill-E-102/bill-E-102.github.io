@@ -14,9 +14,15 @@
   <!-- Page-specific tweak: align this page’s H2 with the cards -->
   <style>
     main > h2 {
-      max-width: 900px;
-      margin: 1rem auto 0rem;
+      max-width: 900px;        /* ↔︎ match .projects-container */
+      width: 100%;
+      margin: 1rem auto 0;     /* centres the rail horizontally */
       text-align: left;
+    }
+
+    /* 1440px adjustment */
+    @media (min-width: 1440px) {
+      main > h2 { max-width: 1100px; }   
     }
   </style>
 </head>

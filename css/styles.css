@@ -277,7 +277,7 @@ nav a:hover {
 }
 
 /*────────────────────────────────────────────────────────────────────────────
-   Nested subsections inside a parent cell (no border)
+   Nested subsections – remainder
 ────────────────────────────────────────────────────────────────────────────*/
 .content-area details.subdetails {
   margin: 0.5rem 0 0;        /* small gap under previous block          */
@@ -414,4 +414,15 @@ footer {
   a {
     word-wrap: break-word;
   }
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Large-desktop enhancement (≥ 1440 px)
+────────────────────────────────────────────────────────────────────────────*/
+@media (min-width: 1440px) {
+  body { font-size: 1.125rem; }
+  .container,
+  .content-container,
+  .projects-container { max-width: 1100px; }
+  .page-content { max-width: 1400px; }
 }
