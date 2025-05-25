@@ -1,8 +1,8 @@
-PWD /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon
+PWD /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon_num
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon/hexagon_num.tex
+INPUT /Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hexagon_num/hexagon_num.tex
 OUTPUT hexagon_num.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/standalone/standalone.cls
@@ -149,9 +149,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libr
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./hexagon_num.aux
-INPUT ./hexagon_num.aux
-INPUT hexagon_num.aux
 OUTPUT hexagon_num.aux
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -161,9 +158,3 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.st
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-OUTPUT hexagon_num.pdf
-INPUT /usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT hexagon_num.aux
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb

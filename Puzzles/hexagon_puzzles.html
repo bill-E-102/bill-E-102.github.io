@@ -87,12 +87,44 @@
         <details id="hex_points_a" class="subdetails">
           <summary>&nbsp; Answer</summary>
           <p>
+            For any natural number $n$, the outermost hexagonal ring contains $6(n-1)$ points, 
+            yielding the following formula:
+            $$H_n := 1+\sum_{i = 1}^n 6(n-1).$$
+            One can then show by the formula for the sum of the first $n$ natural number, the expression
+            above is equivalent to the following:
+            $$H_n = 3n^2 - 3n + 1.$$
+          </p>
+        </details>
+      </details>
+
+      <details id="hex_in_hex">
+        <summary>How many $H_1$ hexagons fit inside the $n$th hexagon?</summary>
+        <p>
+            Suppose we now wish to pack as many hexagons of side length 1 into a hexagon with side
+            length $n$.
+            We might be interested in how many lattice points are contained in a hexagon of side 
+            length $n$ (assuming further that the hexagon is placed down nicely, with each corner
+            fixed to a lattice point). 
+        </p>
+        <p>
+            This amounts to counting points inside expanding concentric hexagons. We give the first
+            few cases below:
+        </p>
+        <figure class="svg-figure">
+            <img src="/Puzzles/resources/hexagon_num/hexagon_num.svg" alt="Hexagonal Rings", class="svg-large">
+            <!-- <figcaption>First four hexagonal numbers as dot layers</figcaption> -->
+        </figure>
+
+
+        <details id="hex_points_a" class="subdetails">
+          <summary>&nbsp; Answer</summary>
+          <p>
             Excluding the case where $n=1$, we first note that the outermost hexagonal ring contains 
             $6(n-1)$ points, yielding the following formula:
             $$H_n := 1+\sum_{i = 1}^n 6(n-1).$$
             One can then show by the formula for the sum of the first $n$ natural number, the expression
             above is equivalent to the following:
-            $$H_n := 3n^2 - 3n + 1.$$
+            $$H_n = 3n^2 - 3n + 1.$$
           </p>
         </details>
       </details>

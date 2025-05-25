@@ -7,45 +7,41 @@
 
 % Controls
 \def\hexstep{0.5}
-\def\xgap{6}
 
-% n=1 → just center
-% n=2 → center + 1 ring
-% n=3 → center + 2 rings, etc.
+% H₁ = 7 (center + 1 ring), H₂ = 19 (center + 2 rings), etc.
 \newcommand{\drawHexagonDots}[3]{%
   \begin{scope}[shift={(#2,#3)}]
-    \node[dot] at (0,0) {}; % center dot always
-
-    \pgfmathtruncatemacro{\rings}{#1 - 1}
-    \ifnum\rings>0
-      \foreach \r in {1,...,\rings} {
+    \pgfmathtruncatemacro{\rings}{#1}
+    \ifnum\rings<1
+      % Do nothing if rings < 1
+    \else
+      \foreach \r in {0,...,\numexpr\rings-1} {
         \pgfmathsetmacro{\rad}{\r * \hexstep}
-        \foreach \side in {0,...,5} {
-          \pgfmathsetmacro{\angleA}{60*\side}
-          \pgfmathsetmacro{\angleB}{60*(\side+1)}
-          \coordinate (A) at (\angleA:\rad);
-          \coordinate (B) at (\angleB:\rad);
-          \foreach \k in {0,...,\numexpr\r-1} {
-            \pgfmathsetmacro{\t}{\k/\r}
-            \path ($(A)!{\t}!(B)$) node[dot] {};
+        \ifnum\r=0
+          \node[dot] at (0,0) {}; % draw center
+        \else
+          \foreach \side in {0,...,5} {
+            \pgfmathsetmacro{\angleA}{60*\side}
+            \pgfmathsetmacro{\angleB}{60*(\side+1)}
+            \coordinate (A) at (\angleA:\rad);
+            \coordinate (B) at (\angleB:\rad);
+            \foreach \k in {0,...,\numexpr\r-1} {
+              \pgfmathsetmacro{\t}{\k/\r}
+              \path ($(A)!{\t}!(B)$) node[dot] {};
+            }
           }
-        }
+        \fi
       }
     \fi
   \end{scope}
 }
 
-% Draw H₁ through H₄
-\drawHexagonDots{1}{-6}{0}  % H₁ = 1
-\drawHexagonDots{2}{-2}{0}  % H₂ = 7
-\drawHexagonDots{3}{ 2}{0}  % H₃ = 19
-\drawHexagonDots{4}{ 6}{0}  % H₄ = 37
+% Draw H₁ through H₃
+\drawHexagonDots{1}{-3}{0}  % H₁ = 7 (no longer just center)
+\drawHexagonDots{2}{ 0}{0}  % H₂ = 19
+\drawHexagonDots{3}{ 3.75}{0}  % H₃ = 37
 
 % Labels
-\node at (-6,-2) {Layer $n=1$ ($H_1 = 1$)};
-\node at (-2,-2) {Layer $n=2$ ($H_2 = 7$)};
-\node at ( 2,-2) {Layer $n=3$ ($H_3 = 19$)};
-\node at ( 6,-2) {Layer $n=4$ ($H_4 = 37$)};
-
-\end{tikzpicture}
-\end{document}
+\node at (-3,-2) {$H_1 = 7$};
+\node at ( 0,-2) {$H_2 = 19$};
+\node at ( 3.75,-2) {$H_3 = 37$};
