@@ -1,9 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1748230381.03646 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex/hex_in_hex.tex" "hex_in_hex.pdf" "hex_in_hex" 1748230381.54717 0
-  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex/hex_in_hex.tex" 1748230380.8105 3703 aaa69734e29b352b3e8fe5def6267f48 ""
+["pdflatex"] 1748233809.0449 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" "hex_in_hex_a1.pdf" "hex_in_hex_a1" 1748233809.56148 0
+  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" 1748233808.8586 3529 5476131ec85aed8697c605fbe78a54af ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty" 1644112042 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
@@ -96,10 +96,10 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1732422387.43307 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1732422334 8221429 b65389ce018bd5fb704c03d66f586641 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "hex_in_hex.aux" 1748230381.5193 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "hex_in_hex.tex" 1748230380.8105 3703 aaa69734e29b352b3e8fe5def6267f48 ""
+  "hex_in_hex_a1.aux" 1748233809.53397 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "hex_in_hex_a1.tex" 1748233808.8586 3529 5476131ec85aed8697c605fbe78a54af ""
   (generated)
-  "hex_in_hex.aux"
-  "hex_in_hex.log"
-  "hex_in_hex.pdf"
+  "hex_in_hex_a1.aux"
+  "hex_in_hex_a1.log"
+  "hex_in_hex_a1.pdf"
   (rewritten before read)
