@@ -1,6 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1748384426.18569 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.tex" "hex_in_hex_a2.pdf" "hex_in_hex_a2" 1748384426.70727 0
-  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.tex" 1748384426.00675 6390 252222d9b3cb3d3a874181e39b1c6e0c ""
+["pdflatex"] 1748395424.48392 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.tex" "hex_in_hex_a2.pdf" "hex_in_hex_a2" 1748395425.1308 0
+  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.tex" 1748395424.29098 7138 5c0f76138b0e4e47738081a67ee0d474 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty" 1644112042 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
@@ -23,9 +24,11 @@
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex" 1673816307 22012 81b34a0aa8fa1a6158cc6220b00e4f10 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex" 1601326656 8893 e851de2175338fdf7c17f3e091d94618 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex" 1601326656 15929 463535aa2c4268fead6674a75c0e8266 ""
+  "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex" 1601326656 339 be0fe46d92a80e3385dd6a83511a46f2 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex" 1608933718 11518 738408f795261b70ce8dd47459171309 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex" 1673816307 186782 af500404a9edec4d362912fe762ded92 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex" 1601326656 32995 ac577023e12c0e4bd8aa420b2e852d1a ""
+  "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex" 1673816307 161011 76ab54df0aa1a9d3b27a94864771d38d ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex" 1557692582 3063 8c415c68a0f3394e45cfeca0b65f6ee6 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex" 1673816307 949 cea70942e7b7eddabfb3186befada2e6 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex" 1673816307 13270 2e54f2ce7622437bf37e013d399743e3 ""
@@ -90,10 +93,11 @@
   "/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty" 1700082560 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1655411236 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "/usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
+  "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1732422387.43307 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1732422334 8221429 b65389ce018bd5fb704c03d66f586641 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "hex_in_hex_a2.aux" 1748384426.67747 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "hex_in_hex_a2.tex" 1748384426.00675 6390 252222d9b3cb3d3a874181e39b1c6e0c ""
+  "hex_in_hex_a2.aux" 1748395425.10671 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "hex_in_hex_a2.tex" 1748395424.29098 7138 5c0f76138b0e4e47738081a67ee0d474 ""
   (generated)
   "hex_in_hex_a2.aux"
   "hex_in_hex_a2.log"
