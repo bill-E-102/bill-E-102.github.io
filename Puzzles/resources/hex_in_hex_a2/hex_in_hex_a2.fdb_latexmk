@@ -1,9 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1748384422.98827 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" "hex_in_hex_a1.pdf" "hex_in_hex_a1" 1748384423.54178 0
-  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" 1748384422.81301 3548 78d1f25f16361a2a367b9cab4bde59d9 ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+["pdflatex"] 1748384426.18569 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.tex" "hex_in_hex_a2.pdf" "hex_in_hex_a2" 1748384426.70727 0
+  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.tex" 1748384426.00675 6390 252222d9b3cb3d3a874181e39b1c6e0c ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty" 1644112042 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
@@ -93,13 +90,12 @@
   "/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty" 1700082560 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1655411236 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "/usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
-  "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1732422387.43307 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1732422334 8221429 b65389ce018bd5fb704c03d66f586641 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "hex_in_hex_a1.aux" 1748384423.50708 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "hex_in_hex_a1.tex" 1748384422.81301 3548 78d1f25f16361a2a367b9cab4bde59d9 ""
+  "hex_in_hex_a2.aux" 1748384426.67747 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "hex_in_hex_a2.tex" 1748384426.00675 6390 252222d9b3cb3d3a874181e39b1c6e0c ""
   (generated)
-  "hex_in_hex_a1.aux"
-  "hex_in_hex_a1.log"
-  "hex_in_hex_a1.pdf"
+  "hex_in_hex_a2.aux"
+  "hex_in_hex_a2.log"
+  "hex_in_hex_a2.pdf"
   (rewritten before read)
