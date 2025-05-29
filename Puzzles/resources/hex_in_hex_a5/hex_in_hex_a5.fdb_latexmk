@@ -1,8 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1748483266.61853 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex/hex_in_hex.tex" "hex_in_hex.pdf" "hex_in_hex" 1748483267.24649 0
-  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex/hex_in_hex.tex" 1748483265.80002 5779 12e7c792aaa67d5f821544d72c3b8e19 ""
+["pdflatex"] 1748486314.50012 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a5/hex_in_hex_a5.tex" "hex_in_hex_a5.pdf" "hex_in_hex_a5" 1748486315.2011 0
+  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a5/hex_in_hex_a5.tex" 1748486314.29469 3308 dca20f198d41af33ee54585ca70f9544 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
@@ -96,10 +95,10 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1732422387.43307 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1732422334 8221429 b65389ce018bd5fb704c03d66f586641 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "hex_in_hex.aux" 1748483267.2203 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "hex_in_hex.tex" 1748483265.80002 5779 12e7c792aaa67d5f821544d72c3b8e19 ""
+  "hex_in_hex_a5.aux" 1748486315.14012 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "hex_in_hex_a5.tex" 1748486314.29469 3308 dca20f198d41af33ee54585ca70f9544 ""
   (generated)
-  "hex_in_hex.aux"
-  "hex_in_hex.log"
-  "hex_in_hex.pdf"
+  "hex_in_hex_a5.aux"
+  "hex_in_hex_a5.log"
+  "hex_in_hex_a5.pdf"
   (rewritten before read)

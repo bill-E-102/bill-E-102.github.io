@@ -14,15 +14,26 @@
   ───────────────────────────────────────────────────────────────────────────-->
   <link rel="stylesheet" href="/css/styles.css">
   <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
-        tags: 'ams'
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        addClass: [200, (doc) => {
+          for (const math of doc.math) {
+            if (!math.display) {
+              math.typesetRoot.classList.add('math-inline');
+            }
+          }
+        }]
       }
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    }
+  };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -103,23 +114,41 @@
       <details id="hex_in_hex">
         <summary>How many $H_1$ hexagons fit inside the $n$th hexagon?</summary>
         <p>
-            Now suppose we wish to pack as many hexagons of side length 1 into a hexagon with side
-            length $n$. We give example solutions to the first three cases below:
+            Suppose we wish to pack as many hexagons of side length 1 into a hexagon with side
+            length $n$. Below are (not necessarily unique) solutions for the first four cases, where 
+            $C_n$ is the max number of $H_1$ hexagons that fit into the $H_n$th hexagon:
         </p>
         <figure class="svg-figure">
-          <img src="/Puzzles/resources/hex_in_hex/hex_in_hex.svg" alt="Hexagonal Rings", class="svg-cell-fit-6"> 
+          <img src="/Puzzles/resources/hex_in_hex/hex_in_hex.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
+          <figcaption>Figure 1: Maximum Hexagonal Packings $C_1 \ldots C_4$.</figcaption>
         </figure>
-
 
         <details id="hex_in_hex_a" class="subdetails">
           <summary>&nbsp; Answer</summary>
           <p>
-            (In Progress)
+            We begin by reframing the problem in terms of graph theory. For any nonnegative integer $n$, 
+            let us now consider the graph $G_n$, whose vertices are the lattice points in $H_n$. 
+            As for the edge set, let there be an edge between every lattice point and its neighbors. 
+            Below are the first four graphs:
+          </p>
+          <figure class="svg-figure">
+            <img src="/Puzzles/resources/hex_in_hex_a5/hex_in_hex_a5.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
+            <figcaption>Figure 2: Hexagonal Graphs $G_0 \ldots G_3$.</figcaption>
+          </figure>
+          <p>
+            Selecting independent vertices in $G_n$ is then equivalent to packing $H_1$ hexagons in 
+            the $H_{n+1}$th hexagon. Thus, a maximum independent set in $G_n$ corresponds to a max
+            packing in $H_{n+1}$. Below are the vertices selected to produce maximum independent sets 
+            for the first four cases:
           </p>
           <figure class="svg-figure">
             <img src="/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
+            <figcaption>Figure 3: Maximum Independent Sets.</figcaption>
           </figure>
-          <figure class="svg-figure">
+          <p>
+            One can clearly see the correspondence between Figures 1 and 3.
+          </p>
+          <!-- <figure class="svg-figure">
             <img src="/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
           </figure>
           <figure class="svg-figure">
@@ -130,7 +159,7 @@
           </figure>
           <figure class="svg-figure">
             <img src="/Puzzles/resources/hex_in_hex_a3/hex_in_hex_a3_h.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
-          </figure>
+          </figure> -->
         </details>
       </details>
 

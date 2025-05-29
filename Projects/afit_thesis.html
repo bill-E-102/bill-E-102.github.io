@@ -14,15 +14,26 @@
   ───────────────────────────────────────────────────────────────────────────-->
 <link rel="stylesheet" href="/css/styles.css">
   <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
-        tags: 'ams'
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        addClass: [200, (doc) => {
+          for (const math of doc.math) {
+            if (!math.display) {
+              math.typesetRoot.classList.add('math-inline');
+            }
+          }
+        }]
       }
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    }
+  };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>

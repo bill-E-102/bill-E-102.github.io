@@ -20,32 +20,81 @@
     \foreach \i in {0,...,5} {
       \path (\i*60:#1) coordinate (P\i); % Place points every 60°
     }
-    \filldraw[fill=olivegreen!10, draw=olivegreen, thick]
+    \filldraw[fill=olivegreen!10, draw=olivegreen]
       (P0) -- (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
   \end{scope}
 }
 
-% H_1
-\drawFirstRingHexagon{.5}{-3}{0}
+% % H_1
+% \drawFirstRingHexagon{.5}{-3}{0}
 
-% H_2
-\drawFirstRingHexagon{.5}{-.25}{-.43}
-\drawFirstRingHexagon{.5}{-.25}{.43}
-\drawFirstRingHexagon{.5}{.5}{0}
+% % H_2
+% \drawFirstRingHexagon{.5}{-.25}{-.43}
+% \drawFirstRingHexagon{.5}{-.25}{.43}
+% \drawFirstRingHexagon{.5}{.5}{0}
+
+% % H_3
+% \drawFirstRingHexagon{.5}{3.75}{0}
+% \drawFirstRingHexagon{.5}{3.75}{.86}
+% \drawFirstRingHexagon{.5}{3.75}{-.86}
+% \drawFirstRingHexagon{.5}{3}{.43}
+% \drawFirstRingHexagon{.5}{4.5}{.43}
+% \drawFirstRingHexagon{.5}{3}{-.43}
+% \drawFirstRingHexagon{.5}{4.5}{-.43}
 
 % H_3
-\drawFirstRingHexagon{.5}{3.75}{0}
-\drawFirstRingHexagon{.5}{2.75}{0}
-\drawFirstRingHexagon{.5}{4.75}{0}
-\drawFirstRingHexagon{.5}{3.25}{.86}
-\drawFirstRingHexagon{.5}{4.25}{.86}
-\drawFirstRingHexagon{.5}{3.25}{-.86}
-\drawFirstRingHexagon{.5}{4.25}{-.86}
+% \drawFirstRingHexagon{.5}{3.75}{0}
+% \drawFirstRingHexagon{.5}{3.75}{.86}
 % \drawFirstRingHexagon{.5}{3.75}{-.86}
-% \drawFirstRingHexagon{.5}{3}{-.43}
 % \drawFirstRingHexagon{.5}{3}{.43}
-% \drawFirstRingHexagon{.5}{4.5}{-.43}
 % \drawFirstRingHexagon{.5}{4.5}{.43}
+% \drawFirstRingHexagon{.5}{3}{-.43}
+% \drawFirstRingHexagon{.5}{4.5}{-.43}
+% % \drawFirstRingHexagon{.5}{3.25}{.86}
+% % \drawFirstRingHexagon{.5}{4.25}{.86}
+% % \drawFirstRingHexagon{.5}{3.25}{-.86}
+% % \drawFirstRingHexagon{.5}{4.25}{-.86}
+% % \drawFirstRingHexagon{.5}{3.75}{-.86}
+% % \drawFirstRingHexagon{.5}{3}{-.43}
+% % \drawFirstRingHexagon{.5}{3}{.43}
+% % \drawFirstRingHexagon{.5}{4.5}{-.43}
+% % \drawFirstRingHexagon{.5}{4.5}{.43}
+
+\drawFirstRingHexagon{.5}{-4.5}{0}
+%H_1
+\drawFirstRingHexagon{.5}{-1.75}{0}
+\drawFirstRingHexagon{.5}{-2.5}{-.43}
+\drawFirstRingHexagon{.5}{-2.5}{.43}
+%H_2
+\drawFirstRingHexagon{.5}{1}{0}
+\drawFirstRingHexagon{.5}{1}{-0.86}
+\drawFirstRingHexagon{.5}{1}{0.86}
+\drawFirstRingHexagon{.5}{1.75}{-0.43}
+\drawFirstRingHexagon{.5}{1.75}{0.43}
+\drawFirstRingHexagon{.5}{.25}{-0.43}
+\drawFirstRingHexagon{.5}{.25}{0.43}
+
+% \selectPoint{1}{0}
+% \selectPoint{2}{0}
+% \selectPoint{0}{0}
+% \selectPoint{1.5}{-0.86}
+% \selectPoint{1.5}{0.86}
+% \selectPoint{0.5}{-0.86}
+% \selectPoint{0.5}{0.86}
+%H_3
+\drawFirstRingHexagon{.5}{5.5}{0}
+\drawFirstRingHexagon{.5}{6.25}{-.43}
+\drawFirstRingHexagon{.5}{6.25}{.43}
+\drawFirstRingHexagon{.5}{4}{0}
+\drawFirstRingHexagon{.5}{7}{0}
+\drawFirstRingHexagon{.5}{4.75}{1.29}
+\drawFirstRingHexagon{.5}{4.75}{-1.29}
+\drawFirstRingHexagon{.5}{6.25}{1.29}
+\drawFirstRingHexagon{.5}{6.25}{-1.29}
+\drawFirstRingHexagon{.5}{4.75}{.43}
+\drawFirstRingHexagon{.5}{4.75}{-.43}
+\drawFirstRingHexagon{.5}{5.5}{.86}
+\drawFirstRingHexagon{.5}{5.5}{-.86}
 
 %─────────────────────────────────────────────────────────────
 % Draws a hexagonal lattice of dots:
@@ -83,23 +132,37 @@
           }
         }
       }
+
+      % Draw hexagon outline around the outer ring
+      \pgfmathsetmacro{\outerrad}{\rings * \hexstep}
+      \path (0:\outerrad) coordinate (P0);
+      \path (60:\outerrad) coordinate (P1);
+      \path (120:\outerrad) coordinate (P2);
+      \path (180:\outerrad) coordinate (P3);
+      \path (240:\outerrad) coordinate (P4);
+      \path (300:\outerrad) coordinate (P5);
+      \draw[thick, olivegreen] (P0) -- (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+
     \fi
+
   \end{scope}
 }
 
 %─────────────
 % Draw examples H₁ through H₃
 %─────────────
-\drawHexagonDots{1}{-3}{0}     % H₁ = 7
-\drawHexagonDots{2}{ 0}{0}     % H₂ = 19
-\drawHexagonDots{3}{ 3.75}{0}  % H₃ = 37
+\drawHexagonDots{1}{-4.5}{0}     % H0 = 1
+\drawHexagonDots{2}{-2.25}{0}     % H₁ = 7
+\drawHexagonDots{3}{ 1}{0}     % H₂ = 19
+\drawHexagonDots{4}{ 5.5}{0}  % H₃ = 37
 
 %─────────────
 % Labels
 %─────────────
-\node at (-3,-2) {$C_1 = 1$};
-\node at ( 0,-2) {$C_2 = 3$};
-\node at ( 3.75,-2) {$C_3 = 7$};
+\node at (-4.5,-2.5) {$C_1 = 1$};
+\node at ( -2.25,-2.5) {$C_2 = 3$};
+\node at ( 1,-2.5) {$C_3 = 7$};
+\node at (5.5,-2.5) {$C_4 = 13$};
 
 \end{tikzpicture}
 \end{document}

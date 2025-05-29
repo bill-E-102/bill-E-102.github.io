@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1748394753.4089 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" "hex_in_hex_a1.pdf" "hex_in_hex_a1" 1748394753.92422 0
-  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" 1748394753.23278 3728 53ede3110a289ff0845bd93dfb3c1c5c ""
+["pdflatex"] 1748486519.57197 "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" "hex_in_hex_a1.pdf" "hex_in_hex_a1" 1748486520.34291 0
+  "/Users/billbrink/Code/bill-E-102.github.io/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.tex" 1748486519.30998 4426 4a379c31c9c243817bf055ae44f48beb ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -96,8 +96,8 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1732422387.43307 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1732422334 8221429 b65389ce018bd5fb704c03d66f586641 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "hex_in_hex_a1.aux" 1748394753.89845 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "hex_in_hex_a1.tex" 1748394753.23278 3728 53ede3110a289ff0845bd93dfb3c1c5c ""
+  "hex_in_hex_a1.aux" 1748486520.28949 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "hex_in_hex_a1.tex" 1748486519.30998 4426 4a379c31c9c243817bf055ae44f48beb ""
   (generated)
   "hex_in_hex_a1.aux"
   "hex_in_hex_a1.log"
