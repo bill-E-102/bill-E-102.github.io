@@ -54,7 +54,7 @@ main {
 
 /* math */
 .math-inline {
-  vertical-align: top !important;
+  vertical-align: .1em !important;
 }
 
 /*────────────────────────────────────────────────────────────────────────────
