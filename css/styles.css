@@ -21,6 +21,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+p {
+  margin-block: .5rem;
+}
 html {
   scroll-behavior: smooth;
   height: 100%;
@@ -34,6 +37,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-size: var(--base-font-size);  /* NEW */
+}
+p {
+  margin: 1rem;  /* adds top and bottom space */
 }
 main {
   flex: 1 0 auto;
@@ -70,7 +76,7 @@ main {
 }
 .svg-figure figcaption {
   margin-top: 0.5rem;
-  margin-bottom: 1;  
+  margin-bottom: 1rem;  
   font-size: 0.9rem;
   color: var(--text-color);
 }
@@ -328,7 +334,9 @@ nav a:hover {
 }
 
 /* 3. Tidy inside content --------------------------------------------------*/
-.content-area details > *:not(summary) { margin: 0; }
+.content-area details > *:not(summary):not(p) {
+  margin: 0;
+}
 
 /*────────────────────────────────────────────────────────────────────────────
    Nested subsections – remainder
@@ -359,6 +367,38 @@ nav a:hover {
 /* hide native markers for these too --------------------------------------*/
 .content-area details.subdetails summary::marker { content: ""; }
 .content-area details.subdetails summary::-webkit-details-marker { display: none; }
+
+/*────────────────────────────────────────────────────────────────────────────
+   Collapsible Proof Block
+────────────────────────────────────────────────────────────────────────────*/
+.content-area details.proof-block {
+  border-left: 4px solid var(--olive);
+  background-color: #f9f9f2;
+  padding: 0.75rem 1.25rem;
+  margin-block-end: 1.5rem;
+}
+
+/* bolded “Proof” summary label */
+.content-area details.proof-block summary {
+  font-weight: bold;
+  color: var(--olive);
+}
+
+/* proof body with spacing */
+.proof-body {
+  margin-top: 0.75rem;
+  position: relative;
+}
+
+/* QED box aligned right */
+.qed {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: var(--text-color);
+}
+
 /*────────────────────────────────────────────────────────────────────────────
    Projects Page Cards
 ────────────────────────────────────────────────────────────────────────────*/

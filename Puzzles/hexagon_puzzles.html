@@ -12,7 +12,7 @@
   <!--──────────────────────────────────────────────────────────────────────────
     Styles & MathJax
   ───────────────────────────────────────────────────────────────────────────-->
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css?v=2">
   <script>
   window.MathJax = {
     tex: {
@@ -34,6 +34,7 @@
   };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 
 <body>
@@ -112,11 +113,14 @@
       </details>
 
       <details id="hex_in_hex">
-        <summary>How many $H_1$ hexagons fit inside the $n$th hexagon?</summary>
+        <summary>How many $H_1$ hexagons fit inside the $H_n$th hexagon?</summary>
         <p>
-            Suppose we wish to pack as many hexagons of side length 1 into a hexagon with side
-            length $n$. Below are (not necessarily unique) solutions for the first four cases, where 
-            $C_n$ is the max number of $H_1$ hexagons that fit into the $H_n$th hexagon:
+            Suppose we wish to <em>nicely</em> pack as many hexagons of side length 1 into a hexagon with side
+            length $n$. 
+            We take nicely to mean that each hexagon will be placed with its center and each of its vertices
+            on lattice points, and none of the hexagons will overlap.
+            Below are solutions for the first four cases, with $C_n$ as the max number of $H_1$ hexagons 
+            fitting in the $H_n$th hexagon:
         </p>
         <figure class="svg-figure">
           <img src="/Puzzles/resources/hex_in_hex/hex_in_hex.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
@@ -128,7 +132,7 @@
           <p>
             We begin by reframing the problem in terms of graph theory. For any nonnegative integer $n$, 
             let us now consider the graph $G_n$ whose vertices are the lattice points in $H_n$. 
-            As for the edge set, let there be an edge between every lattice point and its neighbors. 
+            As for the edge set, for every lattice point, let it share an edge with each of its neighbors. 
             Below are the first four graphs:
           </p>
           <figure class="svg-figure">
@@ -137,17 +141,29 @@
           </figure>
           <p>
             Selecting independent vertices in $G_n$ is then equivalent to packing $H_1$ hexagons in 
-            the $H_{n+1}$th hexagon. Thus, a maximum independent set in $G_n$ corresponds to a max
-            packing in $H_{n+1}$. Below are the vertices selected to produce maximum independent sets 
-            for the first four cases:
+            the $H_{n+1}$th hexagon. 
+            Thus, a maximum independent set in $G_n$ corresponds to a max packing in $H_{n+1}$.
+          </p>
+
+          <p>
+            To produce a maximum independent set for any $G_n$, we will produce an upper bound on 
+            the size of any independent set, and then provide a graph coloring which attains it.
+            For any natural number $n$, we <a href="#hex_points_a">recall</a> there are $3n^2 - 3n + 1$ many
+            lattice points in the $H_n$th hexagon.
+            Then note each vertex belongs to at least one triangle $(K_3)$. In any triangle, all vertices 
+            are adjacent, so at most one out of every three vertices can be selected to form an independent set,
+            yielding: 
+            $$C_n \leq \Bigl\lceil\frac{3n^2-3n+1}{3}\Bigl\rceil = n^2 - n + 1$$
+          </p>
+          
+          <p>
+            Below are the vertices selected to produce maximum independent sets for the first four cases, 
+            illustrating the relation to Figure 1:
           </p>
           <figure class="svg-figure">
             <img src="/Puzzles/resources/hex_in_hex_a1/hex_in_hex_a1.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
             <figcaption>Figure 3: Maximum Independent Sets.</figcaption>
           </figure>
-          <p>
-            One can clearly see the correspondence between Figures 1 and 3.
-          </p>
           <!-- <figure class="svg-figure">
             <img src="/Puzzles/resources/hex_in_hex_a2/hex_in_hex_a2.svg" alt="Hexagonal Rings", class="svg-cell-fit-8"> 
           </figure>
