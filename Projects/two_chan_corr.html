@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--──────────────────────────────────────────────────────────────────────────
+    Meta & Title
+  ───────────────────────────────────────────────────────────────────────────-->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../Images/favicon.ico">
+  <title>Digital Comm Project: Two-Channel Correlator Receiver</title>
+
+  <!--──────────────────────────────────────────────────────────────────────────
+    Styles & MathJax
+  ───────────────────────────────────────────────────────────────────────────-->
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        addClass: [200, (doc) => {
+          for (const math of doc.math) {
+            if (!math.display) {
+              math.typesetRoot.classList.add('math-inline');
+            }
+          }
+        }]
+      }
+    }
+  };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!--──────────────────────────────────────────────────────────────────────────
+    Header
+  ───────────────────────────────────────────────────────────────────────────-->
+  <header>
+    <div class="container">
+      <div class="site-info">
+        <img src="../Images/comp.JPG" alt="Projects Icon" class="header-profile-pic">
+        Two-Channel Correlator Receiver
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Puzzles/puzzles.html">Puzzles</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!--──────────────────────────────────────────────────────────────────────────
+    Two‐Column Layout: TOC & Content
+  ───────────────────────────────────────────────────────────────────────────-->
+  <div class="page-content">
+    <!-- Table of Contents -->
+    <aside class="toc">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#intro">1. Introduction</a></li>
+        <li><a href="#model">2. System Model</a></li>
+        <li><a href="#experiment">3. Simulated Experiment</a></li>
+        <li><a href="#results">4. Results</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content-area">
+        <h2>Two-Channel Correlator Receiver Simulation</h2>
+            <h3>Digital Communications I Project 2</h3>
+        <details id="intro">
+            <summary>1. Introduction</summary>
+            <p>
+                This project was completed during the Winter 2025 term for the EENG 669: Digital Communications I course, 
+                instructed by Dr. Michael Temple. In it, we implemented two distinct two-channel correlator receivers, 
+                both assuming orthogonal BFSK signaling through an additive white Gaussian noise channel. One receiver 
+                implemented no filtering, referred to as the ideal receiver, while the other receiver implemented a 
+                4th-order Butterworth bandpass filter. The simulation estimates BER performance, computes effective SNR, 
+                and compares results with theoretical $E_b/N_0$ bounds.
+            </p>
+            <p>
+                You can explore the source code on GitHub:
+                <a href="https://github.com/bill-E-102/two-channel-correlator-receiver" target="_blank" rel="noopener noreferrer">
+                bill-E-102/two-channel-correlator-receiver
+                </a>
+            </p>
+      </details>
+      <details id="model"><summary>2. System Model</summary>
+        <h4>Modulator</h4>
+        <p>
+            As previously mentioned, the modulator assumed in the project encodes bits via orthogonal binary frequency 
+            shift keying (BFSK). Specifically, the transmitted waveform is given by the following equation:
+            $$s_i(t) = \sqrt{2P_{avg}} \cdot \cos\Bigl(2\pi f_c t - b_i \cdot \frac{\pi}{2}\Bigl), \quad b_i \in \{0, 1\},$$ 
+            where $i$ indexes the digital signal, $P_{avg}$ is the average power, and $f_c$ is the carrier frequency.
+        </p>
+
+        <h4>Correlator Receiver</h4>
+        <p>
+            Our receiver then uses a two-channel correlator architecture for symbol detection. 
+            As previously discussed, each symbol period $ T_{\text{sym}} $ carries one the following orthogonal waveforms:
+        </p>
+        <ul>
+            <li>$$ s_0(t) = \cos(2\pi f_c t) \quad \text{(for bit 0)} $$</li>
+            <li>$$ s_1(t) = \sin(2\pi f_c t) \quad \text{(for bit 1)} $$</li>
+        </ul>
+        <p>
+            Upon reception the receiver then computes two test statistics, which are effectively correlation scores
+            for each symbol, by taking the inner product of the received samples with two reference signals $s_0$ and $s_1$.
+            Below, we provide the written MATLAB code which handles this step; however, we caution here that while
+            we have discussed a continuous-time model for transmission and reception, our MATLAB code discretizes
+            the signal as one might expect.
+        </p>
+
+        <pre><code>
+        rx_matrix = reshape(rx_signal, NSamp, NumBits).';
+        z0 = sum(rx_matrix .* repmat(s_ref0, NumBits, 1), 2) * XDelta;
+        z1 = sum(rx_matrix .* repmat(s_ref1, NumBits, 1), 2) * XDelta;
+        rx_bits = (z0 &lt; z1);
+        </code></pre>
+
+        <p>
+            Here, <code>rx_matrix</code> contains one row per received symbol, and the reference vectors 
+            <code>s_ref0</code> and <code>s_ref1</code> correspond to the basis functions $\cos(2\pi f_c t)$ and 
+            $\sin(2\pi f_c t)$, sampled over the symbol interval. The element-wise multiplication and summation 
+            perform the correlation operation, yielding test statistics $z_0$ and $z_1$. 
+            The receiver implicitly compares these statistics with $z_1 > z_0$, deciding in favor of bit-1 if true, 
+            or bit-0 otherwise.
+        </p>
+
+        <h4>Butterworth Bandpass Filtering</h4>
+        <p>
+            As mentioned, one receiver was implemented with a 4th-order Butterworth bandpass filter.
+            This filter attenuates signal power outside a 3dB band about the provided carrier frequency. The filter was 
+            implemented via zero-phase forward-backward filtering (using <code>filtfilt</code> in MATLAB). Below,
+            we provide the frequency response for the implemented Butterworth filter using experiment parameters we
+            will discuss shortly:
+        </p>
+
+        <figure class="svg-figure">
+          <img src="/Projects/resources/two_chan_imgs/butter_freq_resp.svg" alt="Butterworth Filter Frequency Response" class="svg-large">
+        </figure>
+
+    </details>
+
+    <details id="experiment">
+        <summary>4. Simulated Experiment </summary>
+        <p>
+            We then conduct a Monte Carlo simulation to evaluate our two-channel correlator receiver, measuring 
+            the bit error rate (BER) over a range of input signal-to-noise ratios (SNR) for the two receiver 
+            configurations: the ideal filterreceiver and the bandpass filtered receiver. At each SNR level, the 
+            simulation runs until it accumulates a fixed number of bit errors to determine said BER. At the same time, 
+            we estimate effective SNR at the receiver by taking no less than 10 independent measurements at each input 
+            SNR value.
+        </p>
+
+        <p><strong>Experiment Parameters:</strong></p>
+        <ul>
+          <li><strong>Carrier Frequency:</strong> $f_c = 10{,}000$ Hz</li>
+          <li><strong>Sampling Rate:</strong> $f_s = 200{,}000$ Hz</li>
+          <li><strong>Symbol Duration:</strong> $T_{\text{sym}} = 1$ ms</li>
+          <li><strong>Signal Power:</strong> $P_{\text{avg}} = 1$ W</li>
+          <li><strong>Bit Errors per Trial:</strong> $N = 100$</li>
+          <li><strong>SNR Range:</strong> $-20$ dB $\leq \text{SNR}_{\text{in}} \leq -7$ dB</li>
+          <li><strong>RF SNR Estimation:</strong> $10$ independent samples per SNR point</li>
+        </ul>
+    </details>
+
+    <details id="results">
+      <summary>5. Results</summary>
+
+      <h4>Effective SNR</h4>
+      <p>
+        We begin the results by discussing the effective SNR of each receiver, presented in the plot below.
+        As one would anticipate, the ideal receiver, which does not alter the received signal, has the same 
+        effective or output SNR as the input SNR. The Butterworth filter on the other hand resulted in an 
+        effective SNR approximately 17 dB higher than the input SNR.    
+      </p>
+      <figure class="svg-figure">
+        <img src="/Projects/resources/two_chan_imgs/eff_SNR.svg" alt="eff_SNR" class="svg-large">
+      </figure>
+
+      <h4>Ideal vs. Butterworth Filtering</h4>
+      <p>
+        We then move onto comparing the BERs of both receivers. 
+        The plot below shows BER as a function of the observed RF SNR after filtering. 
+        The Butterworth filter yields a consistently higher SNR, often by over 17 dB, but incurs a slight increase in bit error rate—especially at mid-SNR levels.
+      </p>
+
+      <figure class="svg-figure">
+        <img src="/Projects/resources/two_chan_imgs/idl_butter_BER.svg" alt="BER vs SNR_out" class="svg-large">
+      </figure>
+
+      <p>
+        This tradeoff is better seen when comparing BER against the input SNR. 
+        In that frame of reference, the Butterworth receiver's BER curve clearly diverges from the ideal receiver's
+        beyond the $-12$ dB threshold, indicating degraded performance despite the SNR boost.
+      </p>
+
+      <figure class="svg-figure">
+        <img src="/Projects/resources/two_chan_imgs/idl_butter_BER_In.svg" alt="BER vs SNR_in" class="svg-large">
+      </figure>
+
+      <h4>Ideal vs. Theoretic BER</h4>
+      <p>
+        To benchmark the system against theory, we compute the effective energy-per-bit to noise ratio using
+        $$
+        \frac{E_B}{N_0} = \frac{S}{N} \cdot \frac{W_{\text{RF}}}{R_{\text{sym}}},
+        $$
+        where $W_{\text{RF}} = f_s / 2$ is the effective noise bandwidth and $R_{\text{sym}} = 1 / T_{\text{sym}}$ 
+        is the symbol rate.
+      </p>
+      <p>
+        The theoretical BER for orthogonal BFSK is given by:
+        $$
+        P_B = Q\left(\sqrt{\frac{E_B}{N_0}}\right),
+        $$
+        as derived from Sklar (Eq. 4.82, p. 213). One might note the absence of a $\sqrt{2}$ factor,
+        which is present for antipodal signaling; however, our system uses orthogonal signaling.
+      </p>
+      <p>
+        The comparison plot below confirms that the ideal filter implementation closely follows the theoretical performance curve across all tested $E_B/N_0$ values.
+      </p>
+
+      <figure class="svg-figure">
+        <img src="/Projects/resources/two_chan_imgs/EbN0.svg" alt="BER vs Eb/N0: Ideal vs Theory" class="svg-large">
+      </figure>
+    </details>
+
+
+    </main>
+  </div>
+
+  <!--──────────────────────────────────────────────────────────────────────────
+    Footer
+  ───────────────────────────────────────────────────────────────────────────-->
+  <footer>
+    © 2025 Bill Brink — Two-Channel Correlator Receiver — Last updated:
+    <span id="last-updated"></span>
+  </footer>
+
+  <!--──────────────────────────────────────────────────────────────────────────
+    Scripts: Smooth Scroll & Timestamp
+  ───────────────────────────────────────────────────────────────────────────-->
+  <script>
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.hash.slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          let node = target;
+          while (node && node !== document.body) {
+            if (node.tagName.toLowerCase() === 'details') node.open = true;
+            node = node.parentElement;
+          }
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    const span = document.getElementById('last-updated');
+    const lm = new Date(document.lastModified);
+    span.textContent = lm.toLocaleString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', hour12: true
+    });
+  </script>
+</body>
+</html>

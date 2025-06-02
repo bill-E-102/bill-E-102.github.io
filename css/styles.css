@@ -338,6 +338,27 @@ nav a:hover {
   margin: 0;
 }
 
+/* 4. Content area lists --------------------------------------------------*/
+
+.content-area ul {
+  list-style: disc inside;
+  margin: 0.75rem 0 0.75rem 1.5rem;
+  padding-left: 1.25rem;
+}
+
+.content-area ul li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  line-height: 1.5;
+}
+
+.content-area ul ul {
+  list-style-type: circle;
+  margin-top: 0.4rem;
+  margin-left: 1.25rem;
+  padding-left: 1.75rem;
+}
+
 /*────────────────────────────────────────────────────────────────────────────
    Nested subsections – remainder
 ────────────────────────────────────────────────────────────────────────────*/
@@ -403,13 +424,10 @@ nav a:hover {
    Projects Page Cards
 ────────────────────────────────────────────────────────────────────────────*/
 .projects-container {
-  /* grid auto-fits 1 → N columns as room allows, single-column on phones */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-
-  /* fluid width – tracks the other big containers */
-  width: min(90%, 68rem);          /* ≤ 1088 px cap                       */
+  width: min(90%, 68rem);
   margin: 1.5rem auto 1rem;
 }
 
