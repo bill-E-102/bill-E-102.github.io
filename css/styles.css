@@ -58,10 +58,10 @@ main {
   .container { width: min(86%, 85rem); }  /* widen slightly on 4 K   */
 }
 
-/* math */
+/* math
 .math-inline {
-  vertical-align: .1em !important;
-}
+  vertical-align: em !important;
+} */
 
 /*────────────────────────────────────────────────────────────────────────────
    Images
