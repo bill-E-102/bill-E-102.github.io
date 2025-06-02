@@ -421,6 +421,37 @@ nav a:hover {
 }
 
 /*────────────────────────────────────────────────────────────────────────────
+   Code Block Styling (Cross-Device, Consistent)
+────────────────────────────────────────────────────────────────────────────*/
+
+/*────────────────────────────────────────────────────────────────────────────
+   Code Block Styling (Cross-Device, Consistent)
+────────────────────────────────────────────────────────────────────────────*/
+
+pre code {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  /* background-color: #fdfdf8; */
+  border: 2px solid var(--olive);
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(0.95rem, 0.85rem + 0.35vw, 1.15rem);
+  line-height: 1.5;
+  color: #222;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f2f2e9;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
    Projects Page Cards
 ────────────────────────────────────────────────────────────────────────────*/
 .projects-container {
