@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../Images/favicon.ico">
+  <title>LWE via Integer Programming</title>
+
+  <link rel="stylesheet" href="/css/styles.css?v=2">
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        addClass: [200, (doc) => {
+          for (const math of doc.math) {
+            if (!math.display) {
+              math.typesetRoot.classList.add('math-inline');
+            }
+          }
+        }]
+      }
+    }
+  };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="site-info">
+        <img src="../Images/comp.JPG" alt="Projects Icon" class="header-profile-pic">
+        LWE via Integer Programming
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Puzzles/puzzles.html">Puzzles</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <aside class="toc">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#intro">1. Introduction</a></li>
+        <li><a href="#background">2. The LWE Problem</a></li>
+        <li><a href="#theory">3. Integer Programming Formulation</a></li>
+        <ul>
+          <li><a href="#gauss">3.1 Gaussian Elimination over Finite Fields</a></li>
+        </ul>
+        <li><a href="#implementation">4. Implementation Details</a></li>
+      </ul>
+    </aside>
+
+    <main class="content-area">
+      <h2>Solving the Learning With Errors Problem via Integer Programming</h2>
+      <h3>Integer Programming Final Project</h3>
+
+      <details id="intro">
+        <summary>1. Introduction</summary>
+        <p>
+            You can explore the source code on GitHub:
+            <a href="https://github.com/bill-E-102/LWE_via_IP" target="_blank" rel="noopener noreferrer">
+            bill-E-102/LWE_via_IP
+            </a>
+        </p>
+        <p>
+            This project implements an attack on discrete instances of the search learning with errors (LWE) problem by 
+            solving the corresponding integer programming (IP) problem. This attack was introduced by Shirase in 
+            <a href="https://eprint.iacr.org/2023/1162.pdf"> this paper,</a> where he directly constructed the 
+            corresponding integer programming problem. Minor changes needed to be made to his original formulation 
+            to satisfy IP solver / formulation requirements, which will be discussed shortly. 
+        </p>
+        <p>
+          Instances are generated using the <em>Too Many Hints</em> framework, which produces LWE samples with noise drawn from a binomial distribution. The corresponding github page is linked <a href="https://github.com/juliannowakowski/lwe_with_hints?tab=readme-ov-file"> here.</a>
+        </p>
+      </details>
+    <details id="background">
+    <summary>2. The Discrete LWE Problem</summary>
+
+    <p>
+        The discrete LWE problem can be described in the following manner: given a matrix $A \in \mathbb{Z}_q^{m \times n}$, 
+        a vector $\mathbf{b} \in \mathbb{Z}_q^m$, and the knowledge that 
+        $\mathbf{b} = A \mathbf{s} + \mathbf{e} \mod q$ for some secret vector $\mathbf{s} \in \mathbb{Z}_q^n$ and small noise 
+        vector $\mathbf{e} \in \mathbb{Z}_q^m$, recover the secret $\mathbf{s}$. In this formulation, the vectors and all arithmetic 
+        are defined over the finite field $\mathbb{Z}_q$, and the error vector $\mathbf{e}$ is drawn from a distribution $\chi$ 
+        over $\mathbb{Z}_q$, typically with small support. 
+    </p>
+    <p>
+        Our decision to sample the error vector $\mathbf{e}$ from a binomial distribution is notably different than 
+        Shirase's original formulation, which instead took $\mathbf{e} \in \mathbb{R}^m$ to be sampled from a Gaussian distribution. 
+        Our alternative more closely aligns with prominent implementations of the LWE problems like the NIST finalist 
+        <a href="https://pq-crystals.org/kyber/">CRYSTALS-Kyber</a> scheme and possess benefits seen later in the IP formulation.
+    </p>
+    </details>
+
+    <details id="theory">
+  <summary>3. Integer Programming Formulation</summary>
+
+  <p>
+    To transform the discrete Learning With Errors (LWE) problem into an integer programming (IP) formulation, we begin by 
+    partitioning the matrix $A \in \mathbb{Z}_q^{m \times n}$ as $A = [A_0 \mid A_1]$, where $A_0 \in \mathbb{Z}_q^{n \times n}$ 
+    is assumed to be invertible. Similarly, the right-hand side vector $\mathbf{b} \in \mathbb{Z}_q^m$ is split into 
+    $\mathbf{b} = \begin{bmatrix} \mathbf{b}_0 \\ \mathbf{b}_1 \end{bmatrix}$, with $\mathbf{b}_0 \in \mathbb{Z}_q^n$ and 
+    $\mathbf{b}_1 \in \mathbb{Z}_q^{m-n}$. Shirase’s reduction constructs a map $\phi: \mathbb{Z}_q^n \to \mathbb{Z}_q^{m-n}$ 
+    defined by:
+  </p>
+
+  <p>
+    $$
+    \phi(\mathbf{x}) = A_1 A_0^{-1} \mathbf{x} + \mathbf{b}_1 - A_1 A_0^{-1} \mathbf{b}_0 \mod q,
+    $$
+  </p>
+
+  <p>
+    where $\mathbf{x}$ is a guess at the error vector. This $\phi$ function then allows us to form several constraints on
+    the potential vectors $\mathbf{e}$ could be. We practically apply $\phi$ by evaluating it on each 
+    standard basis vector $\mathbf{e}_i \in \mathbb{Z}_q^n$, storing the result in a matrix $\mathbf{W} \in \mathbb{Z}_q^{(m-n) \times n}$. 
+    The constant offset $\mathbf{u} = \phi(\mathbf{0})$ is computed once and fixed across all solutions.
+  </p>
+
+  <p>
+    The following equation captures the constraints on the potential error vectors levied by $\mathbf{W}$:
+    $$
+    \mathbf{W} \mathbf{x}_{1:n} - \mathbf{x}_{n+1:m} + q\mathbf{y} = -\mathbf{u},
+    $$
+    where $\mathbf{y} \in \mathbb{Z}^{m-n}$ helps account for the modular arthimetic in $\mathbb{Z}_q$.
+  </p>
+
+  <p>
+    Writing this out component-wise makes the effect of $\mathbf{W}$ more transparent:
+  </p>
+
+  <p>
+    $$
+    \left\{
+    \begin{array}{l}
+    w_{1,1} x_1 + w_{2,1} x_2 + \cdots + w_{n,1} x_n + u_1 \equiv x_{n+1} \mod q \\
+    w_{1,2} x_1 + w_{2,2} x_2 + \cdots + w_{n,2} x_n + u_2 \equiv x_{n+2} \mod q \\
+    \vdots \\
+    w_{1,m-n} x_1 + w_{2,m-n} x_2 + \cdots + w_{n,m-n} x_n + u_{m-n} \equiv x_m \mod q
+    \end{array}
+    \right.
+    $$
+  </p>
+
+  <p>
+    The $\phi$ map, together with $\mathbf{W}$ and $\mathbf{u}$, defines the feasible region of the integer program. 
+    Among all $\mathbf{x}$ that satisfy this structure, the solver then needs to search for the one with smallest norm.
+  </p>
+
+  <p>
+    In Shirase’s original formulation, the objective minimizes the $\ell_2$ norm of the guess vector $\mathbf{x}$. However, we
+    then are concerned with a nonlinear program, which many integer programming solvers do not support.
+    To preserve linearity, we instead minimize the $\ell_1$ norm, which we linearize by introducing auxiliary variables $\mathbf{a}, \mathbf{b} \in \mathbb{Z}^{m-n}$ such that:
+    $$
+    x_i = a_i - b_i, \quad |x_i| = a_i + b_i, \quad \text{for } i = n+1, \dots, m.
+    $$
+    This yields the linear objective:
+    $$
+    \min \sum_{i=n+1}^{m} (a_i + b_i),
+    $$
+    compatible with integer programming solvers.
+  </p>
+
+  <p>
+    While this marks a departure from the $\ell_2$ objective, we provide a short proof below that in our discrete setting—where 
+    the error vector is integer-valued and bounded—any solution minimizing the $\ell_1$ norm also minimizes the $\ell_2$ norm. 
+    This guarantees that the minimizer found by our formulation is consistent with Shirase’s theoretical model.
+  </p>
+
+  <details class="proof-block">
+  <summary>Why minimizing the $\ell_1$ norm also minimizes the $\ell_2$ norm in this setting</summary>
+  <div class="proof-body">
+    <p>
+      This result applies in our finite-dimensional vector space $\mathbb{Z}_q^m$, where $q$ and $m$ are positive integers. 
+      Suppose $\mathbf{x} \in \mathbb{Z}_q^m$ minimizes the $\ell_1$ norm amongst the feasible vectors.
+      We note that $|z| \leq z^2$ holds for all integers $z$, thus, if 
+      $||\mathbf{x}||_1 \leq ||\mathbf{y}||_1$, then
+    </p>
+
+    <p>
+      $$
+      \sum_{i=1}^{m} |x_i| \leq \sum_{i=1}^{m} |y_i| 
+      \quad \Rightarrow \quad 
+      \sum_{i=1}^{m} |x_i|^2 \leq \sum_{i=1}^{m} |y_i|^2 
+      \quad \Rightarrow \quad 
+      ||\mathbf{x}||_2 \leq ||\mathbf{y}||_2.
+      $$
+    </p>
+
+    <p>
+      Therefore, within this finite and bounded setting, minimizing the $\ell_1$ norm guarantees that we also minimize the $\ell_2$ norm.
+    </p>
+
+    <div class="qed">∎</div>
+  </div>
+</details>
+
+</details>
+
+      <details id="gauss">
+        <summary>3.1 Gaussian Elimination over Finite Fields</summary>
+        <p>
+          Since some may be interested, to compute $A_0^{-1}$ in $\mathbb{Z}_q$, we implemented modular Gaussian elimination. 
+          The code provided below works entirely as one might expect, where each pivot row is scaled by the modular inverse of its pivot element, and elimination is as in classic row reduction, but done modulo $q$:
+        </p>
+        <pre><code>
+            def invert_matrix_mod_q(matrix, q):
+                n = matrix.shape[0]
+                A = np.copy(matrix)
+                I = np.eye(n, dtype=int)   
+                # Gaussian elimination
+                for i in range(n):
+                    factor = mod_inverse(A[i, i], q)
+                    A[i, :] = (A[i, :] * factor) % q
+                    I[i, :] = (I[i, :] * factor) % q
+
+                    for j in range(n):
+                        if i != j:
+                            factor = A[j, i]
+                            A[j, :] = (A[j, :] - factor * A[i, :]) % q
+                            I[j, :] = (I[j, :] - factor * I[i, :]) % q
+                return I
+        </code></pre>
+        <p>
+            See the source code for more details.
+        </p>
+      </details>
+
+      <details id="implementation">
+        <summary>4. Implementation Details and Results</summary>
+        <p>
+          After formulating the model in Pyomo, we solved a toy problem with the CBC MILP solver, bearing the following
+          parameters:
+          $$ n = 6, m = 12, q = 521, \eta = 10, $$
+          where $\eta$ represents the variance in the binomial distribution the error vector was sampled from.
+          Preliminary tests indicate that this approach to solving the discrete LWE problem is significantly weaker 
+          than alternative known approaches. Even in this remarkably small toy example, it took the IP solver $\approx$ 
+          40 seconds to find a solution, compared to a lattice reduction approach built into the Too Many Hints 
+          package solving the problem in under a tenth of a second. This is not unexpected, as the overhead built into 
+          solvers help identify ways to reduce down the search space. The LWE problem, like all problems used for cryptographic
+          schemes, are provably hard and thus robust against the approaches a solver might apply.
+          Nevertheless, this was an interesting project to implement to learn more about the LWE problem and integer programming.
+        </p>
+      </details>
+    </main>
+  </div>
+
+  <footer>
+    © 2025 Bill Brink — LWE via Integer Programming — Last updated:
+    <span id="last-updated"></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.hash.slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          let node = target;
+          while (node && node !== document.body) {
+            if (node.tagName.toLowerCase() === 'details') node.open = true;
+            node = node.parentElement;
+          }
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    const span = document.getElementById('last-updated');
+    const lm = new Date(document.lastModified);
+    span.textContent = lm.toLocaleString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', hour12: true
+    });
+  </script>
+</body>
+</html>

@@ -97,22 +97,28 @@
         <p>
             As previously mentioned, the modulator assumed in the project encodes bits via orthogonal binary frequency 
             shift keying (BFSK). Specifically, the transmitted waveform is given by the following equation:
+
             $$s_i(t) = \sqrt{2P_{avg}} \cdot \cos\Bigl(2\pi f_c t - b_i \cdot \frac{\pi}{2}\Bigl), \quad b_i \in \{0, 1\},$$ 
-            where $i$ indexes the digital signal, $P_{avg}$ is the average power, and $f_c$ is the carrier frequency.
+            
+            where $i$ indexes the digital signal, $P_{avg}$ is the average power, and $f_c$ is the carrier frequency. 
+            Since $\sin$ and $\cos$ are offset of one another by $\frac{\pi}{2}$ radians, $s_0(t)$ and $s_1(t)$ correspond to
+            similar $\cos$ and $\sin$ functions.
         </p>
 
         <h4>Correlator Receiver</h4>
         <p>
             Our receiver then uses a two-channel correlator architecture for symbol detection. 
-            As previously discussed, each symbol period $ T_{\text{sym}} $ carries one the following orthogonal waveforms:
+            Recalling that $\sin$ and $\cos$ are orthogonal functions, we note each symbol period $ T_{\text{sym}} $ 
+            carries one the aforementioned orthogonal waveforms:
+            $$ s_0(t) = \cos(2\pi f_c t) $$
+            $$ s_1(t) = \sin(2\pi f_c t) $$  
         </p>
-        <ul>
-            <li>$$ s_0(t) = \cos(2\pi f_c t) \quad \text{(for bit 0)} $$</li>
-            <li>$$ s_1(t) = \sin(2\pi f_c t) \quad \text{(for bit 1)} $$</li>
-        </ul>
         <p>
             Upon reception the receiver then computes two test statistics, which are effectively correlation scores
-            for each symbol, by taking the inner product of the received samples with two reference signals $s_0$ and $s_1$.
+            for each symbol, by taking the inner product of the received samples with two reference signals $s_0$ and $s_1$. 
+            The orthogonality of the reference waveforms is then critical, since for each correlation statistic, the inner 
+            product taken between an interval of received signal and one of the reference signals needs to be low if that 
+            interval corresponds to the opposite bit.
             Below, we provide the written MATLAB code which handles this step; however, we caution here that while
             we have discussed a continuous-time model for transmission and reception, our MATLAB code discretizes
             the signal as one might expect.
@@ -127,7 +133,7 @@
 
         <p>
             Here, <code>rx_matrix</code> contains one row per received symbol, and the reference vectors 
-            <code>s_ref0</code> and <code>s_ref1</code> correspond to the basis functions $\cos(2\pi f_c t)$ and 
+            <code>s_ref0</code> and <code>s_ref1</code> correspond to $\cos(2\pi f_c t)$ and 
             $\sin(2\pi f_c t)$, sampled over the symbol interval. The element-wise multiplication and summation 
             perform the correlation operation, yielding test statistics $z_0$ and $z_1$. 
             The receiver implicitly compares these statistics with $z_1 > z_0$, deciding in favor of bit-1 if true, 

@@ -474,7 +474,7 @@ code {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .project-card h3 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
   color: var(--olive);
   font-size: clamp(1.15rem, 1.05rem + 0.3vw, 1.35rem);
 }
@@ -483,6 +483,17 @@ code {
   text-decoration: none;
 }
 .project-card h3 a:hover { text-decoration: underline; }
+
+.project-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+.project-card h4 a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.project-card h4 a:hover { text-decoration: underline; }
+
 .project-card p {
   margin: 0;
   line-height: 1.4;
