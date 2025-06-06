@@ -161,13 +161,13 @@
   <p>
     In Shirase’s original formulation, the objective minimizes the $\ell_2$ norm of the guess vector $\mathbf{x}$. However, we
     then are concerned with a nonlinear program, which many integer programming solvers do not support.
-    To preserve linearity, we instead minimize the $\ell_1$ norm, which we linearize by introducing auxiliary variables $\mathbf{a}, \mathbf{b} \in \mathbb{Z}^{m-n}$ such that:
+    To preserve linearity, we instead minimize the $\ell_1$ norm, which we linearize by introducing auxiliary variables $\mathbf{a}, \mathbf{b} \in \mathbb{Z}^{m}$ such that:
     $$
-    x_i = a_i - b_i, \quad |x_i| = a_i + b_i, \quad \text{for } i = n+1, \dots, m.
+    x_i = a_i - b_i, \quad |x_i| = a_i + b_i, \quad a_i, b_i \geq 0 \quad \forall i = 1, \dots, m.
     $$
     This yields the linear objective:
     $$
-    \min \sum_{i=n+1}^{m} (a_i + b_i),
+    \min \sum_{i=1}^{m} (a_i + b_i),
     $$
     compatible with integer programming solvers.
   </p>

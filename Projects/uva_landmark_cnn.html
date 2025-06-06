@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../Images/favicon.ico">
+  <title>UVA Landmark Recognition via CNN</title>
+  <link rel="stylesheet" href="/css/styles.css?v=2">
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        addClass: [200, (doc) => {
+          for (const math of doc.math) {
+            if (!math.display) {
+              math.typesetRoot.classList.add('math-inline');
+            }
+          }
+        }]
+      }
+    }
+  };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="site-info">
+        <img src="../Images/comp.JPG" alt="Projects Icon" class="header-profile-pic">
+        UVA Landmark Recognition via CNN
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Puzzles/puzzles.html">Puzzles</a></li>
+          <li><a href="/Projects/projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <aside class="toc">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction</a></li>
+        <li><a href="#notebook">2. Jupyter Notebook</a></li>
+      </ul>
+    </aside>
+
+    <main class="content-area">
+      <h2>UVA Landmark Recognition via CNN</h2>
+      <h3>CS 4774: Machine Learning Code-a-thon 2 Project</h3>
+
+      <details id="introduction" open>
+        <summary>1. Introduction</summary>
+        <p>
+          I completed this project in Fall 2022 for my undergraduate machine learning class. In it, we trained both custom 
+          CNN architectures and transfer learning models to classify buildings on UVA Grounds. I have since gone back to
+          update my custom CNN architecture to re-familiarize myself with machine learning.
+        </p>
+        <p>
+            You can explore the source code on GitHub:
+            <a href="https://github.com/bill-E-102/UVA_ML_Image_Recog" target="_blank" rel="noopener noreferrer">
+            bill-E-102/UVA_ML_Image_Recog
+            </a>
+        </p>
+      </details>
+
+      <details id="notebook">
+        <summary>2. Jupyter Notebook</summary>
+        <iframe src="uva_landmark_cnn_raw.html" style="width: 100%; height: 5000px; border: none;"></iframe>
+      </details>
+
+    </main>
+  </div>
+
+  <footer>
+    © 2025 Bill Brink — UVA Landmark Recognition via CNN — Last updated:
+    <span id="last-updated"></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.hash.slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          let node = target;
+          while (node && node !== document.body) {
+            if (node.tagName.toLowerCase() === 'details') node.open = true;
+            node = node.parentElement;
+          }
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    const span = document.getElementById('last-updated');
+    const lm = new Date(document.lastModified);
+    span.textContent = lm.toLocaleString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', hour12: true
+    });
+  </script>
+</body>
+</html>

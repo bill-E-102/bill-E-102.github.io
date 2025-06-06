@@ -424,10 +424,6 @@ nav a:hover {
    Code Block Styling (Cross-Device, Consistent)
 ────────────────────────────────────────────────────────────────────────────*/
 
-/*────────────────────────────────────────────────────────────────────────────
-   Code Block Styling (Cross-Device, Consistent)
-────────────────────────────────────────────────────────────────────────────*/
-
 pre code {
   display: block;
   width: 100%;
@@ -497,6 +493,31 @@ code {
 .project-card p {
   margin: 0;
   line-height: 1.4;
+}
+
+.project-tags {
+  margin-top: 1rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tags span {
+  background-color: #eef1f5;
+  color: #333;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: background-color 0.2s;
+}
+
+.project-tags span:hover {
+  background-color: #dce2eb;
+  cursor: default;
 }
 
 /*────────────────────────────────────────────────────────────────────────────
