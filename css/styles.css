@@ -500,7 +500,7 @@ code {
 }
 
 .project-tags {
-  margin-top: 1rem;
+  margin-top: 0rem;
   margin-bottom: 0.75rem; /* more space under tags */
   padding-top: 0.25rem;
   border-top: 1px solid #ddd;
