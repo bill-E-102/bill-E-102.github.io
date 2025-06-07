@@ -4,3 +4,4 @@ Personal & Academic Webpage Portfolio
 Currently Contains:
 - Projects
 - Puzzles
+- Resume
